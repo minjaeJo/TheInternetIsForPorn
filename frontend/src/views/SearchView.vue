@@ -3,7 +3,10 @@
         <div class="logo">
             <span v-for="(title,key) in title_arr" :key="key" v-html="title"></span>
         </div>
-        <input class="search"></input>
+        <div class="search-block">
+            <input class="search">
+            <img src="../assets/images/149852.svg">
+        </div>
     </div>
 </template>
 
@@ -44,23 +47,33 @@ export default {
 .logo span {
     margin-right: 15px;
 }
-.search {
-    width: 795px;
+.search-block {
+    position: relative;
+    width: 800px;
     margin: auto;
+}
+.search {
+    width: 650px;
     height: 70px;
     border-radius: 24px;
     border: 2px solid #dfe1e5;
     box-shadow: none;
     z-index: 3;
-    font-size: 20px;
-    font-weight: 600;
     margin-top: 50px;
-    padding: 0px 8px 5px 30px;
+    padding: 0px 80px 5px 30px;
+    font-size: 25px;
+    font-weight: 600;
 }
 .search:focus,
 .search:hover {
     outline: none;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
     border-color: rgba(223,225,229,0);
+}
+.search-block img {
+    position: absolute;
+    top: 70px;
+    right: 50px;
+    width: 30px;
 }
 </style>
