@@ -1,9 +1,7 @@
 <template>
     <div class="search-view">
-
         <div class="logo">
             <img style="width: 50vw;" src="../assets/images/logo.png">
-            <!-- <span v-for="(title,key) in title_arr" :key="key" v-html="title"></span> -->
         </div>
         <div class="search-block">
             <input class="search" v-model="search_value" @keyup.enter="searchData">
@@ -14,36 +12,22 @@
 
 <script>
 export default {
-    mounted() {
-        this.makeLogo()
-    },
     data() {
         return {
-            title_arr: [],
-            title_color: ["#4285f4","#ea4336","#fbbc05","#33a853"],
             search_value: '',
-            search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q='
+            search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q=',
+            search_result: []
         }
     },
     methods: {
-        makeLogo() {
-            var test = "This is Internet".split("")
-            var count = this.title_color.length
-            test.forEach(element => {
-                if(count >= 3) count = 0
-                else count += 1
-                this.title_arr.push(`<span style=color:${this.title_color[count]}>${element}</span>`)
-            });
-        },
         searchData() {
             if(this.search_value) {
                 this.$http.get(this.search_api + this.search_value).then((response)=>{
                     this.search_value = ''
-                    console.log(response)
+                    this.search_result = response.data.items
                 }).catch(function (error) {
                     console.log(error);
                 })
-                console.log(this.search_api)
             }
             else {
                 alert('입력값이 없습니다.')
@@ -62,8 +46,8 @@ export default {
     font-size: 80px;
     font-weight: 700;
 }
-.logo span {
-    margin-right: 15px;
+.logo img {
+    width: 50vw;
 }
 .search-block {
     position: relative;
