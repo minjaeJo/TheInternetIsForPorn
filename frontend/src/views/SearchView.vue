@@ -15,23 +15,13 @@ export default {
     data() {
         return {
             search_value: '',
-            search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q=',
-            search_result: []
+
         }
     },
     methods: {
         searchData() {
-            if(this.search_value) {
-                this.$http.get(this.search_api + this.search_value).then((response)=>{
-                    this.search_value = ''
-                    this.search_result = response.data.items
-                }).catch(function (error) {
-                    console.log(error);
-                })
-            }
-            else {
-                alert('입력값이 없습니다.')
-            }
+            this.$router.push({ name: 'SearchResultView', params: {query: this.search_value} })
+            this.search_value = ''
         }
     }
 }

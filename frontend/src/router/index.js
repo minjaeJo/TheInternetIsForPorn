@@ -14,7 +14,7 @@ export default new Router({
             component: SearchView
         },
         {
-            path: '/search',
+            path: '/search/:query',
             name: 'SearchResultView',
             component: SearchResultView
         }
