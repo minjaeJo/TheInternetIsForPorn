@@ -25,10 +25,12 @@ export default {
         if(this.$route.params.query) {
             this.$http.get(this.search_api + this.$route.params.query).then((response)=>{
                 this.search_result = response.data.items
+                this.search_value = this.$route.params.query
             }).catch(function (error) {
                 console.log(error);
             })
         }
+
     },
     data() {
         return {
@@ -112,7 +114,7 @@ export default {
     box-shadow: none;
     z-index: 3;
     padding: 0px 80px 5px 30px;
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 600;
 }
 .search:focus,
