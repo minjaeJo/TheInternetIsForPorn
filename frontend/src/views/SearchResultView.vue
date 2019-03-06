@@ -12,8 +12,8 @@
         <div v-for="(data,index) in search_result" :key="index">
             <div class = "item-block">
                 <a :href="data.formattedUrl" class="title">{{data.title}}</a>
-                    <div class = "link">{{data.link}}</div>
-                    <div class = "bodyText">{{data.snippet}}</div>
+                <div class = "link">{{data.link}}</div>
+                <div class = "bodyText">{{data.snippet}}</div>
             </div>
         </div>
     </div>
