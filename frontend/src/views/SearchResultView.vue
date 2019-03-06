@@ -9,7 +9,10 @@
                 <img src="../assets/images/search.svg" @click="searchData">
             </div>
         </div>
-        <div v-for="(data,index) in search_result" :key="index">
+        <div v-if= "search_result == undefined || search_result == null || search_result == ''">
+                검색하신 항목이 존재하지 않습니다 다시 검색해 주세요
+            </div>
+        <div v-else v-for="(data,index) in search_result" :key="index">
             <div class = "item-block">
                 <a :href="data.formattedUrl" class="title">{{data.title}}</a>
                 <div class = "link">{{data.link}}</div>
