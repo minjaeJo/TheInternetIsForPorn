@@ -116,7 +116,7 @@ export default {
     border: 2px solid #dfe1e5;
     box-shadow: none;
     z-index: 3;
-    padding: 0px 80px 5px 30px;
+    padding: 0px 80px 0px 20px;
     font-size: 15px;
     font-weight: 600;
 }
@@ -131,6 +131,7 @@ export default {
     top: 10px;
     right: 30px;
     width: 20px;
+    cursor: pointer;
 }
 
 </style>

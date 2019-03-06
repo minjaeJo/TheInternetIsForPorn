@@ -66,5 +66,6 @@ export default {
     top: 70px;
     right: 50px;
     width: 30px;
+    cursor: pointer;
 }
 </style>
