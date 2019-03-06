@@ -9,9 +9,10 @@
                 <img src="../assets/images/search.svg" @click="searchData">
             </div>
         </div>
-        <div v-if= "search_result == undefined || search_result == null || search_result == ''">
-                검색하신 항목이 존재하지 않습니다 다시 검색해 주세요
-            </div>
+        <div class="dont-find" v-if= "search_result == undefined || search_result == null || search_result == ''">
+            <img src="../assets/images/dont_find.gif">
+            <div>검색 결과가 없습니다. 다시 시도해주세요</div>
+        </div>
         <div v-else v-for="(data,index) in search_result" :key="index">
             <div class = "item-block">
                 <a :href="data.formattedUrl" class="title">{{data.title}}</a>
@@ -133,5 +134,10 @@ export default {
     width: 20px;
     cursor: pointer;
 }
-
+.dont-find {
+    margin-left: 85px;
+}
+.dont-find img {
+    width: 700px;
+}
 </style>
