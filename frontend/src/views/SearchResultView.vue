@@ -1,15 +1,17 @@
 <template>
     <div>
-        <div class="logo">
-            <img src="../assets/images/logo.png">
+        <div class="search-container">
+            <div class="logo">
+                <img src="../assets/images/logo.png">
+            </div>
+            <div class="search-block">
+                <input class="search" v-model="search_value" @keyup.enter="searchData">
+                <img src="../assets/images/search.svg" @click="searchData">
+            </div>
         </div>
-        <div class="search-block">
-            <input class="search" v-model="search_value" @keyup.enter="searchData">
-            <img src="../assets/images/search.svg" @click="searchData">
-        </div>    
         <div v-for="(data,index) in search_result" :key="index">
             <div class = "item-block">
-                <a :src="data.formattedUrl" class="title">{{data.title}}</a>
+                <a :href="data.formattedUrl" class="title">{{data.title}}</a>
                     <div class = "link">{{data.link}}</div>
                     <div class = "bodyText">{{data.snippet}}</div>
             </div>
@@ -31,16 +33,17 @@ export default {
     data() {
         return {
             search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q=',
-            search_result: []
+            search_result: [],
+            search_value: ''
         }
     }
 ,
     methods: {
         searchData() {
             this.$router.push({ name: 'SearchResultView', params: {query: this.search_value} })
-            this.search_value = ''
+            location.reload()
         }
-    }   
+    }
 
 }
 </script>
@@ -79,38 +82,35 @@ export default {
     word-wrap: break-word;
     width : 623px;
 }
-
-
-
-
-
-
+.search-container {
+    margin: 50px;
+}
 .search-view {
     text-align: left;
     margin-top: 20vh;
 }
 .logo {
     display : inline-block;
-    font-size: 80px;
-    font-weight: 700;
+    vertical-align: middle;
+    margin-right: 15px;
 }
 .logo img {
-    width: 20vw;
+    width: 195px;
+
 }
 .search-block {
     display : inline-block;
     position: relative;
-    width: 700px;
     margin: auto;
+    vertical-align: top;
 }
 .search {
     width: 450px;
-    height: 70px;
+    height: 35px;
     border-radius: 24px;
     border: 2px solid #dfe1e5;
     box-shadow: none;
     z-index: 3;
-    margin-top: 50px;
     padding: 0px 80px 5px 30px;
     font-size: 25px;
     font-weight: 600;
@@ -123,9 +123,9 @@ export default {
 }
 .search-block img {
     position: absolute;
-    top: 70px;
-    right: 50px;
-    width: 30px;
+    top: 10px;
+    right: 30px;
+    width: 20px;
 }
 
 </style>
