@@ -1,24 +1,30 @@
 <template>
-    <div>
+    <div class="window-container">
         <div class="search-container">
             <div class="logo">
                 <img src="../assets/images/logo.png">
-            </div>
+            </div style>
             <div class="search-block">
                 <input class="search" v-model="search_value" @keyup.enter="searchData">
                 <img src="../assets/images/search.svg" @click="searchData">
             </div>
         </div>
-        <div class="dont-find" v-if= "search_result == undefined || search_result == null || search_result == ''">
-            <img src="../assets/images/dont_find.gif">
-            <div>검색 결과가 없습니다. 다시 시도해주세요</div>
+        <div v-if= "search_result == undefined || search_result == null || search_result == ''">
+            검색하신 항목이 존재하지 않습니다 다시 검색해 주세요
         </div>
         <div v-else v-for="(data,index) in search_result" :key="index">
             <div class = "item-block">
+                <div v-if = "index== 3" class = "ADImage">
+                    <img src="../assets/images/poofAD.png">
+                </div>
                 <a :href="data.formattedUrl" class="title">{{data.title}}</a>
                 <div class = "link">{{data.link}}</div>
                 <div class = "bodyText">{{data.snippet}}</div>
             </div>
+        </div>
+         <div class = "sideImg">
+            <img src="../assets/images/poofSideBar1.png">
+            <img src="../assets/images/poofSideBar2.png">
         </div>
     </div>
 </template>
@@ -55,6 +61,11 @@ export default {
 </script>
 
 <style scoped>
+.window-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 .item-block{
     margin: auto;
     padding-bottom: 30px;
@@ -104,6 +115,25 @@ export default {
     width: 195px;
 
 }
+.sideImg {
+    position: absolute;
+    width: 500px;
+    top: 100px;
+    right: 0px;
+}
+.sideImg img:nth-child(1){
+    display : inline-block;
+    width : 350px;
+    vertical-align : top;
+}
+.sideImg img:nth-child(2){
+    display : inline-block;
+    width : 120px;
+}
+.ADImage img{
+    width: 600px;
+    margin-bottom : 15px;
+}
 .search-block {
     display : inline-block;
     position: relative;
@@ -134,10 +164,5 @@ export default {
     width: 20px;
     cursor: pointer;
 }
-.dont-find {
-    margin-left: 85px;
-}
-.dont-find img {
-    width: 700px;
-}
+
 </style>
