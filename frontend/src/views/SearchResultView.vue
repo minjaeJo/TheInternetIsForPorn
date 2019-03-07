@@ -15,11 +15,11 @@
         </div>
         <div v-else v-for="(data,index) in search_result" :key="index">
             <div class = "item-block">
-                <div v-if="index == 3" class = "ADImage">
+                <div v-if="index == 3" class="ADImage">
                     <img src="../assets/images/poofAD.png">
                 </div>
-                <div class ="tlt"> 
-                    <a :href="data.formattedUrl" class="title" data-out-effect= "fadeOut">{{data.title}}</a>
+                <div class ="tlt">
+                    <div class="title" @click="$router.push({ name: 'DetailView'})">{{data.title}}</div>
                 </div>
                 <div class = "link">{{data.link}}</div>
                 <div class = "bodyText">{{data.snippet}}</div>
@@ -33,7 +33,6 @@
 </template>
 
 <script>
-
 export default {
     created() {
         if(this.$route.params.query) {
@@ -54,8 +53,7 @@ export default {
             search_value: '',
             status: false
         }
-    }
-,
+    },
     methods: {
         searchData() {
             this.$router.push({ name: 'SearchResultView', params: {query: this.search_value} })
@@ -63,17 +61,13 @@ export default {
             this.status = false
         }
     }
-    
+
 
 }
 
 </script>
 
 <style scoped>
-.tlt.textillate({
-     in: { effect: 'rollIn' } });
-
-
 .window-container {
     position: relative;
     width: 100%;

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import MarqueeText from 'vue-marquee-text-component'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
