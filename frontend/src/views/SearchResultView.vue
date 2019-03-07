@@ -18,7 +18,9 @@
                 <div v-if="index == 3" class = "ADImage">
                     <img src="../assets/images/poofAD.png">
                 </div>
-                <a :href="data.formattedUrl" class="title">{{data.title}}</a>
+                <div class ="tlt"> 
+                    <a :href="data.formattedUrl" class="title" data-out-effect= "fadeOut">{{data.title}}</a>
+                </div>
                 <div class = "link">{{data.link}}</div>
                 <div class = "bodyText">{{data.snippet}}</div>
             </div>
@@ -31,6 +33,7 @@
 </template>
 
 <script>
+
 export default {
     created() {
         if(this.$route.params.query) {
@@ -60,11 +63,17 @@ export default {
             this.status = false
         }
     }
+    
 
 }
+
 </script>
 
 <style scoped>
+.tlt.textillate({
+     in: { effect: 'rollIn' } });
+
+
 .window-container {
     position: relative;
     width: 100%;
@@ -77,6 +86,7 @@ export default {
 
 }
 .title{
+
     font-size : 16px;
     color : blue;
     height : 1.2em;
