@@ -3,18 +3,19 @@
         <div class="search-container">
             <div class="logo">
                 <img src="../assets/images/logo.png">
-            </div style>
+            </div>
             <div class="search-block">
                 <input class="search" v-model="search_value" @keyup.enter="searchData">
                 <img src="../assets/images/search.svg" @click="searchData">
             </div>
         </div>
-        <div v-if= "search_result == undefined || search_result == null || search_result == ''">
-            검색하신 항목이 존재하지 않습니다 다시 검색해 주세요
+        <div class="dont-find" v-if="status && (search_result == undefined || search_result == null || search_result == '')">
+            <img src="../assets/images/dont_find.gif">
+            <div>검색 결과가 없습니다. 다시 시도해주세요</div>
         </div>
         <div v-else v-for="(data,index) in search_result" :key="index">
             <div class = "item-block">
-                <div v-if = "index== 3" class = "ADImage">
+                <div v-if="index == 3" class = "ADImage">
                     <img src="../assets/images/poofAD.png">
                 </div>
                 <a :href="data.formattedUrl" class="title">{{data.title}}</a>
@@ -31,11 +32,12 @@
 
 <script>
 export default {
-    mounted() {
+    created() {
         if(this.$route.params.query) {
             this.$http.get(this.search_api + this.$route.params.query).then((response)=>{
                 this.search_result = response.data.items
                 this.search_value = this.$route.params.query
+                this.status = true
             }).catch(function (error) {
                 console.log(error);
             })
@@ -46,7 +48,8 @@ export default {
         return {
             search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q=',
             search_result: [],
-            search_value: ''
+            search_value: '',
+            status: false
         }
     }
 ,
@@ -54,6 +57,7 @@ export default {
         searchData() {
             this.$router.push({ name: 'SearchResultView', params: {query: this.search_value} })
             location.reload()
+            this.status = false
         }
     }
 
@@ -81,13 +85,16 @@ export default {
 }
 
 .link{
+    width: 620px;
     color : green;
     font-size : 13px;
     padding-bottom: 2px;
     display: block;
     text-align: left;
     position: static;
-
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .bodyText{
     margin-top: 1px;
