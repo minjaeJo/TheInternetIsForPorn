@@ -18,9 +18,7 @@
                 <div v-if="index == 3" class="ADImage">
                     <img src="../assets/images/poofAD.png">
                 </div>
-                <div class ="tlt">
-                    <div class="title" @click="$router.push({ name: 'DetailView'})">{{data.title}}</div>
-                </div>
+                <div class="title" @click="$router.push({ name: 'DetailView', params : { id : data.title}})">{{data.title}}</div>
                 <div class = "link">{{data.link}}</div>
                 <div class = "bodyText">{{data.snippet}}</div>
             </div>
