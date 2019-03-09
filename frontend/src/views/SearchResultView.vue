@@ -13,17 +13,18 @@
             <img src="../assets/images/dont_find.gif">
             <div>검색 결과가 없습니다. 다시 시도해주세요</div>
         </div>
-        <div v-else v-for="(data,index) in search_result" :key="index">
-            <div class = "item-block">
-                <div v-if="index == 3" class="ADImage">
+        <div v-else>
+            <img class="item-img" :src="query_img">
+            <div class="item-block" v-for="(data,index) in search_result" :key="index">
+                <div v-if="index==3" class="ADImage">
                     <img src="../assets/images/poofAD.png">
                 </div>
                 <div class="title" @click="$router.push({ name: 'DetailView', params : { id : data.title}})">{{data.title}}</div>
-                <div class = "link">{{data.link}}</div>
-                <div class = "bodyText">{{data.snippet}}</div>
+                <div class="link">{{data.link}}</div>
+                <div class="bodyText">{{data.snippet}}</div>
             </div>
         </div>
-         <div class = "sideImg">
+         <div class="sideImg">
             <img src="../assets/images/poofSideBar1.png">
             <img src="../assets/images/poofSideBar2.png">
         </div>
@@ -38,18 +39,27 @@ export default {
                 this.search_result = response.data.items
                 this.search_value = this.$route.params.query
                 this.status = true
+                let has_img = false
+                this.search_result.forEach(element => {
+                    if(element.pagemap.cse_image != undefined && !has_img) {
+                        if(element.pagemap.cse_image[0].src[0] == "h") {
+                            this.query_img = element.pagemap.cse_image[0].src
+                            has_img = true
+                        }
+                    }
+                });
             }).catch(function (error) {
                 console.log(error);
             })
         }
-
     },
     data() {
         return {
             search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q=',
             search_result: [],
             search_value: '',
-            status: false
+            status: false,
+            query_img: ''
         }
     },
     methods: {
@@ -57,6 +67,9 @@ export default {
             this.$router.push({ name: 'SearchResultView', params: {query: this.search_value} })
             location.reload()
             this.status = false
+        },
+        extractImg() {
+
         }
     }
 
@@ -123,6 +136,9 @@ export default {
 .logo img {
     width: 195px;
 
+}
+.item-img {
+    width: 100px;
 }
 .sideImg {
     position: absolute;
