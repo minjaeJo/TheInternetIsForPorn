@@ -14,12 +14,11 @@
             <div>검색 결과가 없습니다. 다시 시도해주세요</div>
         </div>
         <div v-else>
-            <img class="item-img" :src="query_img">
             <div class="item-block" v-for="(data,index) in search_result" :key="index">
                 <div v-if="index==3" class="ADImage">
                     <img src="../assets/images/poofAD.png">
                 </div>
-                <div class="title" @click="$router.push({ name: 'DetailView', params : { id : data.title}})">{{data.title}}</div>
+                <div class="title" @click="sendDataForNextPage(data)">{{data.title}}</div>
                 <div class="link">{{data.link}}</div>
                 <div class="bodyText">{{data.snippet}}</div>
             </div>
@@ -68,14 +67,11 @@ export default {
             location.reload()
             this.status = false
         },
-        extractImg() {
-
+        sendDataForNextPage(data) {
+            this.$router.push({ name: 'DetailView', params : { id : data.title, img: this.query_img}})
         }
     }
-
-
 }
-
 </script>
 
 <style scoped>
@@ -135,11 +131,8 @@ export default {
 }
 .logo img {
     width: 195px;
-
 }
-.item-img {
-    width: 100px;
-}
+\
 .sideImg {
     position: absolute;
     width: 500px;

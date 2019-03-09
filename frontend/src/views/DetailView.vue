@@ -4,12 +4,13 @@
                 <img src="../assets/images/logo.png">
                 {{this.$route.params.id}}
         </div>
+        <img class="item-img" :src="before_page_data.img">
         <div class="sideTitleImg"><img src="../assets/images/poohSideTitle.gif"></div>
         <div class="Title"> </div>
         <link-view v-for="(a,index) in 10" :key="index"></link-view>
-        <vue-p5 
+        <vue-p5
         @sketch="sketch"
-        @setup="setup" 
+        @setup="setup"
         @draw="draw"
         @keypressed="keyPressed"
         @mousemoved="mouseMoved"
@@ -28,8 +29,12 @@ export default {
         MarqueeText,
         VueP5
     },
+    mounted() {
+        this.before_page_data = this.$route.params
+    },
     data() {
       return {
+        before_page_data: '',
         red: 255,
         green: 0,
         blue: 0,
@@ -88,6 +93,9 @@ export default {
 
 
 <style scoped>
+.item-img {
+    width: 100px;
+}
 .swing {
   animation: swing 2s infinite linear both;
 }
