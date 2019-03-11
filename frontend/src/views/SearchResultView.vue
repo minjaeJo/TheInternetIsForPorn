@@ -24,7 +24,7 @@
             </div>
         </div>
          <div class="sideImg">
-            <img src="../assets/images/poofSideBar1.png"  @click="handleClickButton">
+            <img src="../assets/images/poofSideBar1.png">
             <img src="../assets/images/poofSideBar2.png">
         </div>
         <popup :visible.sync="visible" style="position: fixed; right: 0px; bottom: 0px;">
@@ -82,9 +82,6 @@ export default {
         },
         sendDataForNextPage(data) {
             this.$router.push({ name: 'DetailView', params : { id : data.title, img: this.query_img}})
-        },
-        handleClickButton(){
-            this.visible = !this.visible
         }
     }
 }
