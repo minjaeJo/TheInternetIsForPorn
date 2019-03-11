@@ -6,6 +6,7 @@ import router from './router'
 import axios from 'axios'
 import VueP5 from 'vue-p5'
 import MarqueeText from 'vue-marquee-text-component'
+import 'expose-loader?$!expose-loader?jQuery!jquery'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false

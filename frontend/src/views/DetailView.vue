@@ -2,7 +2,7 @@
     <div>
         <div class="logo">
                 <img src="../assets/images/logo.png">
-                {{this.$route.params.id}}
+                {{this.before_page_data.id}}
         </div>
         <img class="item-img" :src="before_page_data.img">
         <div class="sideTitleImg"><img src="../assets/images/poohSideTitle.gif"></div>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import LinkView from './components/linkView'
+import LinkView from './components/LinkView'
 import MarqueeText from 'vue-marquee-text-component'
 import VueP5 from 'vue-p5';
 export default {

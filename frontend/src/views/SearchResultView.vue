@@ -24,14 +24,19 @@
             </div>
         </div>
          <div class="sideImg">
-            <img src="../assets/images/poofSideBar1.png">
+            <img src="../assets/images/poofSideBar1.png" @click="is_popup=true">
             <img src="../assets/images/poofSideBar2.png">
         </div>
+        <popup v-if="is_popup" :item="item" @closePopup="is_popup=false"></popup>
     </div>
 </template>
 
 <script>
+import Popup from './components/Popup'
 export default {
+    components: {
+        Popup
+    },
     created() {
         if(this.$route.params.query) {
             this.$http.get(this.search_api + this.$route.params.query).then((response)=>{
@@ -58,7 +63,12 @@ export default {
             search_result: [],
             search_value: '',
             status: false,
-            query_img: ''
+            query_img: '',
+            is_popup: false,
+            item: {
+                header: 111,
+                body: 111
+            }
         }
     },
     methods: {
@@ -132,7 +142,6 @@ export default {
 .logo img {
     width: 195px;
 }
-\
 .sideImg {
     position: absolute;
     width: 500px;
