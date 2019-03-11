@@ -27,7 +27,7 @@
             <img src="../assets/images/poofSideBar1.png">
             <img src="../assets/images/poofSideBar2.png">
         </div>
-        <popup :visible.sync="visible" style="position: fixed; right: 0px; bottom: 0px;">
+        <popup :visible.sync="visible" style="position: fixed; right: 0px; bottom: 0px;" class="arrow">
             <img src="../assets/images/dont_find.gif">
         </popup>
     </div>
@@ -88,6 +88,24 @@ export default {
 </script>
 
 <style scoped>
+.arrow {
+  animation: arrow 1.2s;
+}
+
+@keyframes arrow {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+
+ 
+}
 .window-container {
     position: relative;
     width: 100%;
