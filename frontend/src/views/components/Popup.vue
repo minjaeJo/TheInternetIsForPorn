@@ -1,14 +1,13 @@
 <template>
-  <div class="popup"
-    v-if="visible" @click.self="handleWrapperClick">
+  <div class="popup" v-if="visible" @click.self="handleWrapperClick">
     <div class="popup-dialog">
-      <header class="popup-header">
-        <span>{{title}}</span>
-        <button @click="$emit('update:visible', !visible)">Close</button>
-      </header>
-      <div class="popup-body">
-        <slot></slot>
-      </div>
+        <header class="popup-header">
+            <span>{{title}}</span>
+            <button @click="$emit('update:visible', !visible)">Close</button>
+        </header>
+        <div class="popup-body">
+            <slot></slot>
+        </div>
     </div>
   </div>
 </template>
