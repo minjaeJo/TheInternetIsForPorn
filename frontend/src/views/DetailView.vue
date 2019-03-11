@@ -1,12 +1,26 @@
 <template>
     <div class="window-container">
+         <div class="arrow">
+            <img src="../assets/images/detailViewPopUp.png">
+        </div>
         <div class="headImg">
             <img src="../assets/images/detailViewHeadImg.png">
         </div>
-        <div class="arrow">
-            <img src="../assets/images/detailViewPopUp.png">
+       
+        <div class="bodyBlock">
+            <img src="../assets/images/poofSideBar2.png">
+            <img src="../assets/images/poofSideBar2.png">
+
+            <div class="bodyText">
+                {{this.before_page_data.id}}
+                <div class="subText">
+                    {{this.before_page_data.text}}
+                    <img class="item-img" :src="before_page_data.img">
+                </div>
+
+            </div>
+
         </div>
-        <div class="bodyBlock"></div>
 
 
 
@@ -18,11 +32,16 @@ export default {
     mounted() {
         this.before_page_data = this.$route.params
     },
+    data() {
+      return {
+        before_page_data: ''
+
+      }
+    }
 
 }
 </script>
-
-<style scoped>
+<style scoped lang="scss">
 .window-container {
     position: relative;
     width: 100%;
@@ -31,14 +50,13 @@ export default {
 .headImg{
     display: flex;
     align-items: center;
-    position: absolute;
+    position: relative;
     margin: 0;
 }
 .headImg img:nth-child(1){
     margin-top: 50px;   
     width:100%;
 }
-
 .arrow {
     animation: arrow 1.2s;
 }
@@ -48,7 +66,37 @@ export default {
     top: 0%;
     left: 35%;
 }
+.bodyBlock {
+    margin: 20px;
+    display: inline;
+    position: absolute;
+    width: 97%;
+ }
+ .bodyBlock img:nth-child(1){
+    float: left;
+    width: 12%;
+    padding-right: 30px;
+ }
+.bodyBlock img:nth-child(2){
+    float: right;
+    right: -20px;
+    width: 12%;
+}
+.item-img{
+    float: right;
+}
+.bodyText{
+    font-size: 30px;
+    
+}
+.subText{
+    font-size: 18px;
+    display: inline;
+}
 
+.subText img{
+    width: 40%;
+}
 @keyframes arrow {
   from {
     opacity: 0;

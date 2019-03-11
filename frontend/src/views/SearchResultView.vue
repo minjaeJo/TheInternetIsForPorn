@@ -81,7 +81,8 @@ export default {
             this.status = false
         },
         sendDataForNextPage(data) {
-            this.$router.push({ name: 'DetailView', params : { id : data.title, img: this.query_img}})
+            this.$router.push({ name: 'DetailView', params : { id : data.title, img: this.query_img, text : data.snippet}})
+
         }
     }
 }
