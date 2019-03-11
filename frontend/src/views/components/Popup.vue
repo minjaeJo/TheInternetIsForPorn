@@ -1,68 +1,66 @@
 <template>
-    <div class="popup-container popup-close">
-        <div class="popup" @click="closePopup">
-            <div class="popup-header">
-                <div class="title">{{item.header}}</div>
-            </div>
-            <div class="popup-body" v-html="item.body"></div>
-        </div>
+  <div class="popup"
+    v-if="visible" @click.self="handleWrapperClick">
+    <div class="popup-dialog">
+      <header class="popup-header">
+        <span>{{title}}</span>
+        <button @click="$emit('update:visible', !visible)">Close</button>
+      </header>
+      <div class="popup-body">
+        <slot></slot>
+      </div>
     </div>
+  </div>
 </template>
+
 <script>
 export default {
-    props: ['item'],
+    props: {
+        visible: {
+            type: Boolean,
+            require: true,
+            default: false
+        },
+        title: {
+            type: String,
+            require: false,
+        },
+    },
     methods: {
-        closePopup(event){
-            if($(event.target).hasClass("popup") || $(event.target).hasClass("popup-close")  || $(event.target).hasClass("close") )
-                this.$emit('closePopup');
-        }
+        handleWrapperClick(){
+            this.$emit('update:visible', false)
+        },
     },
 }
 </script>
-<style>
-.popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
-    z-index: 9900;
-    text-align: -webkit-center;
-    padding-top: 190px;
-}
+
+<style scoped>
 .popup {
-    position: relative;
-    width: 660px;
-    height: 500px;
-    background: #000;
-    padding: 100px;
-    color: #09fcdc;border: 1px solid #09fcdc;
+  background-color: rgba(0,0,0,0.7);
+  top: 0; right: 0; bottom: 0; left: 0;
+  position: fixed;
+  overflow: auto;
+  margin: 0;
+}
+.popup-dialog {
+    left: 50%;
+    top: 75px;
+    width: 600px;
+    position: absolute;
+    background: #fff;
+    margin-bottom: 50px;
 }
 .popup-header {
-    width: 100%;
-    height: 60px;
-}
-.popup-header .title{
-    font-size: 24px;
-    font-family: 'noto-bold';
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.29;
+    padding: 16px 16px 0 25px;
+    position: relative;
 }
 .popup-body {
-    width: 445px;
-    font-size: 16px;
-    font-family: 'noto-light';
-    text-align: left;
-    line-height: 1.75;
-    word-break: break-all;
-    text-align: justify;
-}
-.close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 30px;
-    opacity: 1.0;
-
+    padding: 25px;
+    min-height: 150px;
+    max-height: 412px;
+    overflow-y: scroll;
 }
 </style>

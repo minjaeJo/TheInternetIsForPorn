@@ -24,10 +24,14 @@
             </div>
         </div>
          <div class="sideImg">
-            <img src="../assets/images/poofSideBar1.png" @click="is_popup=true">
+            <img src="../assets/images/poofSideBar1.png"  @click="handleClickButton">
             <img src="../assets/images/poofSideBar2.png">
         </div>
-        <popup v-if="is_popup" :item="item" @closePopup="is_popup=false"></popup>
+        <popup title="This is modal" :visible.sync="visible">
+            <div>
+                This is modal body
+            </div>
+        </popup>
     </div>
 </template>
 
@@ -36,6 +40,16 @@ import Popup from './components/Popup'
 export default {
     components: {
         Popup
+    },
+    data() {
+        return {
+            search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q=',
+            search_result: [],
+            search_value: '',
+            status: false,
+            query_img: '',
+            visible: false
+        }
     },
     created() {
         if(this.$route.params.query) {
@@ -57,20 +71,6 @@ export default {
             })
         }
     },
-    data() {
-        return {
-            search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q=',
-            search_result: [],
-            search_value: '',
-            status: false,
-            query_img: '',
-            is_popup: false,
-            item: {
-                header: 111,
-                body: 111
-            }
-        }
-    },
     methods: {
         searchData() {
             this.$router.push({ name: 'SearchResultView', params: {query: this.search_value} })
@@ -79,6 +79,9 @@ export default {
         },
         sendDataForNextPage(data) {
             this.$router.push({ name: 'DetailView', params : { id : data.title, img: this.query_img}})
+        },
+        handleClickButton(){
+            this.visible = !this.visible
         }
     }
 }
