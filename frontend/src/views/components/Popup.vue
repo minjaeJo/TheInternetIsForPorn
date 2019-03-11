@@ -1,10 +1,10 @@
 <template>
-  <div class="popup" v-if="visible" @click.self="handleWrapperClick">
+  <div class="popup" v-if="visible" @click.self="this.$emit('update:visible', false)">
     <div class="popup-dialog">
-        <header class="popup-header">
+        <!-- <header class="popup-header">
             <span>{{title}}</span>
             <button @click="$emit('update:visible', !visible)">Close</button>
-        </header>
+        </header> -->
         <div class="popup-body">
             <slot></slot>
         </div>
@@ -26,28 +26,20 @@ export default {
         },
     },
     methods: {
-        handleWrapperClick(){
-            this.$emit('update:visible', false)
-        },
+
     },
 }
 </script>
 
 <style scoped>
 .popup {
-  background-color: rgba(0,0,0,0.7);
-  top: 0; right: 0; bottom: 0; left: 0;
-  position: fixed;
-  overflow: auto;
-  margin: 0;
+    background-color: rgba(0,0,0,0.7);
+    overflow: auto;
+    margin: 0;
 }
 .popup-dialog {
-    left: 50%;
-    top: 75px;
-    width: 600px;
-    position: absolute;
+    width: auto;
     background: #fff;
-    margin-bottom: 50px;
 }
 .popup-header {
     font-size: 28px;

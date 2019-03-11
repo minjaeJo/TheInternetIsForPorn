@@ -27,10 +27,8 @@
             <img src="../assets/images/poofSideBar1.png"  @click="handleClickButton">
             <img src="../assets/images/poofSideBar2.png">
         </div>
-        <popup title="This is modal" :visible.sync="visible">
-            <div>
-                This is modal body
-            </div>
+        <popup :visible.sync="visible" style="position: fixed; right: 0px; bottom: 0px;">
+            <img src="../assets/images/dont_find.gif">
         </popup>
     </div>
 </template>
@@ -70,6 +68,11 @@ export default {
                 console.log(error);
             })
         }
+    },
+    mounted() {
+        setTimeout( () => {
+            this.visible = true
+        }, 3000);
     },
     methods: {
         searchData() {
