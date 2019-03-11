@@ -9,3 +9,10 @@ export default {
     name: 'App'
 }
 </script>
+<style>
+body {
+    display: block;
+    margin: 0px;
+}
+</style>
+
