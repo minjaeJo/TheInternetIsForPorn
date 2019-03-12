@@ -1,25 +1,26 @@
 <template>
     <div class="window-container">
-         <div class="arrow">
+        <div class="arrow">
             <img src="../assets/images/detailViewPopUp.png">
         </div>
         <div class="headImg">
             <img src="../assets/images/detailViewHeadImg.png">
         </div>
-       
+
         <div class="bodyBlock">
-            <img src="../assets/images/poofSideBar2.png">
-            <img src="../assets/images/poofSideBar2.png">
+            <img class="left-img" src="../assets/images/poofSideBar2.png">
+            <img class="right-img" src="../assets/images/poofSideBar2.png">
+            <img class="center-img" :src="before_page_data.img">
 
             <div class="bodyText">
                 {{this.before_page_data.id}}
                 <div class="subText">
                     {{this.before_page_data.text}}
-                    <img class="item-img" :src="before_page_data.img">
                 </div>
-
             </div>
-
+            <div class="dummyText">
+                ql2kehr wjlekjgewjkblrgjlkdjsavjbldj;nkfsjkhjbaslneflnjsvslb.,msfjkldnmg.f,dakldsj vbkdsnmvldajjwebgk mrqwemjkafnlqrwkdajsd jbalnekm;ffsdbnjlgrqmwl;fadsbfjklnjmermf;ajdkvxlnfgsmwe,ml;bdksnjfgwerkm;lfsbdjklngw
+            </div>
         </div>
 
 
@@ -28,6 +29,8 @@
 </template>
 
 <script>
+import LinkView from './components/LinkView'
+
 export default {
     mounted() {
         this.before_page_data = this.$route.params
@@ -72,31 +75,40 @@ export default {
     position: absolute;
     width: 97%;
  }
- .bodyBlock img:nth-child(1){
+ .bodyBlock .left-img{
     float: left;
     width: 12%;
     padding-right: 30px;
  }
-.bodyBlock img:nth-child(2){
+.bodyBlock .right-img{
     float: right;
     right: -20px;
     width: 12%;
 }
-.item-img{
-    float: right;
+.bodyBlock .center-img{
+    position:static;
+    top: 80px;
+    left: auto;
+    float: left;
+    width: 30%;
+    
 }
 .bodyText{
     font-size: 30px;
-    
+    display: grid;
 }
 .subText{
     font-size: 18px;
     display: inline;
 }
-
-.subText img{
-    width: 40%;
+.dummyText{
+    position: relative;
+    right: 0;
+    left: auto;
+    display: inline;
 }
+
+
 @keyframes arrow {
   from {
     opacity: 0;
