@@ -1,5 +1,6 @@
 <template>
-    <div class="window-container">
+
+    <div :class="[visible[8] ? 'swing' : 'window-container']" >
         <div class="arrow">
             <img src="/static/images/detailViewPopUp.png">
         </div>
@@ -65,7 +66,7 @@ export default {
     },
     data() {
       return {
-        visible: [false,false,false,false,false,false,false,false],
+        visible: [false,false,false,false,false,false,false,false,false],
         before_page_data: '',
         animation : [
             'change',            
@@ -118,6 +119,9 @@ export default {
         }, 11300);
         setTimeout( () => {
             this.$set(this.visible, 7, !this.visible[7])
+        }, 11500);
+        setTimeout( () => {
+            this.$set(this.visible, 8, !this.visible[8])
         }, 11500);
  
         
