@@ -15,16 +15,13 @@
             <div class="bodyText">
                 {{this.before_page_data.id}}
                 <div class="subText">
-                    {{this.before_page_data.text}}
+                    {{mix_text}}
                 </div>
             </div>
             <div class="dummyText">
                 ql2kehr wjlekjgewjkblrgjlkdjsavjbldj;nkfsjkhjbaslneflnjsvslb.,msfjkldnmg.f,dakldsj vbkdsnmvldajjwebgk mrqwemjkafnlqrwkdajsd jbalnekm;ffsdbnjlgrqmwl;fadsbfjklnjmermf;ajdkvxlnfgsmwe,ml;bdksnjfgwerkm;lfsbdjklngw
             </div>
         </div>
-
-
-
     </div>
 </template>
 
@@ -34,14 +31,18 @@ import LinkView from './components/LinkView'
 export default {
     mounted() {
         this.before_page_data = this.$route.params
+        var mix_arr = this.$route.params.snippet.sort(()=>{return 0.5 - Math.random()})
+        console.log(mix_arr)
+        mix_arr.forEach((element) => {
+            this.mix_text += element + ' '
+        })
     },
     data() {
       return {
-        before_page_data: ''
-
+        before_page_data: '',
+        mix_text: ''
       }
     }
-
 }
 </script>
 <style scoped lang="scss">
@@ -57,7 +58,7 @@ export default {
     margin: 0;
 }
 .headImg img:nth-child(1){
-    margin-top: 50px;   
+    margin-top: 50px;
     width:100%;
 }
 .arrow {
@@ -91,7 +92,7 @@ export default {
     left: auto;
     float: left;
     width: 30%;
-    
+
 }
 .bodyText{
     font-size: 30px;

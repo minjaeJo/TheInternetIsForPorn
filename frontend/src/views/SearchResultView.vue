@@ -46,7 +46,8 @@ export default {
             search_value: '',
             status: false,
             query_img: '',
-            visible: false
+            visible: false,
+            snippet_arr: []
         }
     },
     created() {
@@ -63,6 +64,9 @@ export default {
                             has_img = true
                         }
                     }
+                    element.snippet.split(' ').forEach((snippet)=> {
+                        this.snippet_arr.push(snippet)
+                    })
                 });
             }).catch(function (error) {
                 console.log(error);
@@ -81,8 +85,7 @@ export default {
             this.status = false
         },
         sendDataForNextPage(data) {
-            this.$router.push({ name: 'DetailView', params : { id : data.title, img: this.query_img, text : data.snippet}})
-
+            this.$router.push({ name: 'DetailView', params: { id : data.title, img: this.query_img, snippet : this.snippet_arr}})
         }
     }
 }
@@ -105,7 +108,7 @@ export default {
     transform: translateY(0)
   }
 
- 
+
 }
 .window-container {
     position: relative;
