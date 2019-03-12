@@ -2,21 +2,21 @@
     <div class="window-container">
         <div class="search-container">
             <div class="logo">
-                <img src="../assets/images/logo.png">
+                <img src="/static/images/logo.png">
             </div>
             <div class="search-block">
                 <input class="search" v-model="search_value" @keyup.enter="searchData">
-                <img src="../assets/images/search.svg" @click="searchData">
+                <img src="/static/images/search.svg" @click="searchData">
             </div>
         </div>
         <div class="dont-find" v-if="status && (search_result == undefined || search_result == null || search_result == '')">
-            <img src="../assets/images/dont_find.gif">
+            <img src="/static/images/dont_find.gif">
             <div>검색 결과가 없습니다. 다시 시도해주세요</div>
         </div>
         <div v-else>
             <div class="item-block" v-for="(data,index) in search_result" :key="index">
                 <div v-if="index==3" class="ADImage">
-                    <img src="../assets/images/poofAD.png">
+                    <img src="/static/images/poofAD.png">
                 </div>
                 <div class="title" @click="sendDataForNextPage(data)">{{data.title}}</div>
                 <div class="link">{{data.link}}</div>
@@ -24,11 +24,11 @@
             </div>
         </div>
          <div class="sideImg">
-            <img src="../assets/images/poofSideBar1.png">
-            <img src="../assets/images/poofSideBar2.png">
+            <img src="/static/images/poofSideBar1.png">
+            <img src="/static/images/poofSideBar2.png">
         </div>
         <popup :visible.sync="visible" style="position: fixed; right: 0px; bottom: 0px;" class="arrow">
-            <img src="../assets/images/dont_find.gif">
+            <img src="/static/images/dont_find.gif">
         </popup>
     </div>
 </template>

@@ -1,15 +1,15 @@
 <template>
     <div class="window-container">
         <div class="arrow">
-            <img src="../assets/images/detailViewPopUp.png">
+            <img src="/static/images/detailViewPopUp.png">
         </div>
         <div class="headImg">
-            <img src="../assets/images/detailViewHeadImg.png">
+            <img src="/static/images/detailViewHeadImg.png">
         </div>
 
         <div class="bodyBlock">
-            <img class="left-img" src="../assets/images/poofSideBar2.png">
-            <img class="right-img" src="../assets/images/poofSideBar2.png">
+            <img class="left-img" src="/static/images/poofSideBar2.png">
+            <img class="right-img" src="/static/images/poofSideBar2.png">
             <img class="center-img" :src="before_page_data.img">
 
             <div class="bodyText">
@@ -21,6 +21,30 @@
             <div class="dummyText">
                 ql2kehr wjlekjgewjkblrgjlkdjsavjbldj;nkfsjkhjbaslneflnjsvslb.,msfjkldnmg.f,dakldsj vbkdsnmvldajjwebgk mrqwemjkafnlqrwkdajsd jbalnekm;ffsdbnjlgrqmwl;fadsbfjklnjmermf;ajdkvxlnfgsmwe,ml;bdksnjfgwerkm;lfsbdjklngw
             </div>
+        <popup :visible.sync="visible[0]" >
+              <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 50) + 30 +'%', left: Math.floor(Math.random() * 40) + 40 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]">
+        </popup> 
+        <popup :visible.sync="visible[1]">
+              <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 90) - 10 +'%', left: Math.floor(Math.random() * 90) - 10 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]" >
+        </popup>
+        <popup :visible.sync="visible[2]">
+              <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 60) - 10 +'%', left: Math.floor(Math.random() * 60) - 10 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]" >
+        </popup>
+        <popup :visible.sync="visible[3]">
+              <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 90) - 10 +'%', left: Math.floor(Math.random() * 90) - 10 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]">
+        </popup>
+        <popup :visible.sync="visible[4]">
+              <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 50) + 30 +'%', left: Math.floor(Math.random() * 60) - 10 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]">
+        </popup>
+        <popup :visible.sync="visible[5]">
+              <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 90) - 10 +'%', left: Math.floor(Math.random() * 90) - 10 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]">
+        </popup>
+        <popup :visible.sync="visible[6]">
+              <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 60) - 10 +'%', left: Math.floor(Math.random() * 40) + 40 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]">
+        </popup>
+        <popup :visible.sync="visible[7]">
+              <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 90) - 10 +'%', left: Math.floor(Math.random() * 90) - 10 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]">
+        </popup>
         </div>
 
 
@@ -30,21 +54,173 @@
 
 <script>
 import LinkView from './components/LinkView'
+import Popup from './components/Popup'
 
 export default {
+    components: {
+        Popup
+    },
     mounted() {
         this.before_page_data = this.$route.params
     },
     data() {
       return {
-        before_page_data: ''
-
+        visible: [false,false,false,false,false,false,false,false],
+        before_page_data: '',
+        animation : [
+            'change',            
+            'move3',
+            'move',
+            'swing'
+        ],
+        images: [
+            '/static/images/RandPopup0.gif',
+            '/static/images/RandPopup1.gif',
+            '/static/images/RandPopup2.gif',
+            '/static/images/RandPopup3.gif',
+            '/static/images/RandPopup4.gif',
+            '/static/images/RandPopup5.gif',
+            '/static/images/RandPopup6.gif',
+            '/static/images/RandPopup7.gif',
+            '/static/images/RandPopup8.gif',
+            '/static/images/RandPopup9.gif',
+            '/static/images/RandPopup10.gif',
+            '/static/images/RandPopup11.gif',
+            '/static/images/RandPopup12.gif',
+            '/static/images/RandPopup13.gif',
+            '/static/images/RandPopup14.gif',
+        ],    
+        selectedImage: ''
       }
+    },
+
+    mounted() {
+        setTimeout( () => {
+            this.$set(this.visible, 0, !this.visible[0])
+        }, 3000);
+        setTimeout( () => {
+            this.$set(this.visible, 1, !this.visible[1])
+        }, 5500);
+        setTimeout( () => {
+            this.$set(this.visible, 2, !this.visible[2])
+        }, 7500);
+        setTimeout( () => {
+            this.$set(this.visible, 3, !this.visible[3])
+        }, 9000);
+        setTimeout( () => {
+            this.$set(this.visible, 4, !this.visible[4])
+        }, 10500);
+        setTimeout( () => {
+            this.$set(this.visible, 5, !this.visible[5])
+        }, 11000);
+        setTimeout( () => {
+            this.$set(this.visible, 6, !this.visible[6])
+        }, 11300);
+        setTimeout( () => {
+            this.$set(this.visible, 7, !this.visible[7])
+        }, 11500);
+ 
+        
     }
 
 }
 </script>
 <style scoped lang="scss">
+.swing {
+  animation: swing .4s infinite linear both;
+}
+
+@keyframes swing {
+  20% {
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+.move {
+  animation: move 1.8s infinite linear both;
+}
+
+@keyframes move {
+  from, to {
+    transform: translate3d(0, 50px, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -50px, 0);
+  }
+}
+
+.rotate-move {
+  animation: rotate-move 1.8s infinite linear both;
+}
+.rotate-center {
+  animation: rotate-center 1s infinite linear both;
+  transform-origin: 80% 80%;
+}
+.move3 {
+  animation: move3 1.8s infinite linear both;
+}
+
+@keyframes move3 {
+  from, to {
+    transform: translate3d(20px, 20px, 0);
+  }
+
+  25% {
+    transform: translate3d(-20px, 20px, 0);
+  }
+
+  50% {
+    transform: translate3d(-20px, -20px, 0);
+  }
+
+  75% {
+    transform: translate3d(20px, -20px, 0);
+  }
+}
+
+@keyframes rotate-center {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.change {
+  animation: change 2s infinite linear;
+}
+
+@keyframes change {
+  from, to  {
+    transform: rotateY(0deg)
+  }
+
+  50% {
+    transform: rotateY(180deg)
+  }
+}
+
+
 .window-container {
     position: relative;
     width: 100%;
