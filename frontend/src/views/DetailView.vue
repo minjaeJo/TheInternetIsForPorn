@@ -16,15 +16,12 @@
             <div class="bodyText">
                 {{this.before_page_data.id}}
                 <div class="subText">
-                    {{this.before_page_data.text}}
+                    {{mix_text}}
                 </div>
-            </div>
-            <div class="dummyText">
-                ql2kehr wjlekjgewjkblrgjlkdjsavjbldj;nkfsjkhjbaslneflnjsvslb.,msfjkldnmg.f,dakldsj vbkdsnmvldajjwebgk mrqwemjkafnlqrwkdajsd jbalnekm;ffsdbnjlgrqmwl;fadsbfjklnjmermf;ajdkvxlnfgsmwe,ml;bdksnjfgwerkm;lfsbdjklngw
             </div>
         <popup :visible.sync="visible[0]" >
               <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 50) + 30 +'%', left: Math.floor(Math.random() * 40) + 40 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]">
-        </popup> 
+        </popup>
         <popup :visible.sync="visible[1]">
               <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 90) - 10 +'%', left: Math.floor(Math.random() * 90) - 10 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]" >
         </popup>
@@ -47,9 +44,6 @@
               <img :src="images[Math.floor(Math.random() * this.images.length)]" :style="{top: Math.floor(Math.random()* 90) - 10 +'%', left: Math.floor(Math.random() * 90) - 10 +'%', position: 'fixed'}" :class="animation[Math.floor(Math.random() * 4)]">
         </popup>
         </div>
-
-
-
     </div>
 </template>
 
@@ -63,13 +57,22 @@ export default {
     },
     mounted() {
         this.before_page_data = this.$route.params
+        var mix_arr = this.$route.params.snippet.sort(()=>{return 0.5 - Math.random()})
+        console.log(mix_arr)
+        mix_arr.forEach((element) => {
+            this.mix_text += element + ' '
+        })
     },
     data() {
       return {
-        visible: [false,false,false,false,false,false,false,false,false],
+
+
+        before_page_data: '',
+        mix_text: '',
+        visible: [false,false,false,false,false,false,false,false],
         before_page_data: '',
         animation : [
-            'change',            
+            'change',
             'move3',
             'move',
             'swing'
@@ -90,11 +93,10 @@ export default {
             '/static/images/RandPopup12.gif',
             '/static/images/RandPopup13.gif',
             '/static/images/RandPopup14.gif',
-        ],    
+        ],
         selectedImage: ''
       }
     },
-
     mounted() {
         setTimeout( () => {
             this.$set(this.visible, 0, !this.visible[0])
@@ -124,7 +126,6 @@ export default {
             this.$set(this.visible, 8, !this.visible[8])
         }, 11500);
  
-        
     }
 
 }
@@ -133,7 +134,6 @@ export default {
 .swing {
   animation: swing .4s infinite linear both;
 }
-
 @keyframes swing {
   20% {
     transform: rotate3d(0, 0, 1, 15deg);
@@ -155,11 +155,9 @@ export default {
     transform: rotate3d(0, 0, 1, 0deg);
   }
 }
-
 .move {
   animation: move 1.8s infinite linear both;
 }
-
 @keyframes move {
   from, to {
     transform: translate3d(0, 50px, 0);
@@ -169,7 +167,6 @@ export default {
     transform: translate3d(0, -50px, 0);
   }
 }
-
 .rotate-move {
   animation: rotate-move 1.8s infinite linear both;
 }
@@ -180,7 +177,6 @@ export default {
 .move3 {
   animation: move3 1.8s infinite linear both;
 }
-
 @keyframes move3 {
   from, to {
     transform: translate3d(20px, 20px, 0);
@@ -198,7 +194,6 @@ export default {
     transform: translate3d(20px, -20px, 0);
   }
 }
-
 @keyframes rotate-center {
   from {
     transform: rotate(0deg);
@@ -208,12 +203,9 @@ export default {
     transform: rotate(360deg);
   }
 }
-
-
 .change {
   animation: change 2s infinite linear;
 }
-
 @keyframes change {
   from, to  {
     transform: rotateY(0deg)
@@ -223,7 +215,16 @@ export default {
     transform: rotateY(180deg)
   }
 }
-
+@keyframes arrow {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
 
 .window-container {
     position: relative;
@@ -237,7 +238,7 @@ export default {
     margin: 0;
 }
 .headImg img:nth-child(1){
-    margin-top: 50px;   
+    margin-top: 50px;
     width:100%;
 }
 .arrow {
@@ -271,7 +272,7 @@ export default {
     left: auto;
     float: left;
     width: 30%;
-    
+
 }
 .bodyText{
     font-size: 30px;
@@ -281,23 +282,4 @@ export default {
     font-size: 18px;
     display: inline;
 }
-.dummyText{
-    position: relative;
-    right: 0;
-    left: auto;
-    display: inline;
-}
-
-
-@keyframes arrow {
-  from {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0)
-  }
-}
-
 </style>
