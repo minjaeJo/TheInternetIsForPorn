@@ -50,8 +50,8 @@ $popup: 'popup';
     }
     &-body {
         padding: 25px;
-        min-height: 150px;
-        max-height: 412px;
+        min-height: 100%;
+        max-height: 100%;
         overflow-y: scroll;
     }
 }

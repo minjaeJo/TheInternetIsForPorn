@@ -1,11 +1,11 @@
 <template>
     <div class="search-view">
         <div class="logo">
-            <img src="../assets/images/logo.png">
+            <img src="/static/images/logo.png">
         </div>
         <div class="search-block">
             <input class="search" v-model="search_value" @keyup.enter="searchData">
-            <img src="../assets/images/search.svg" @click="searchData">
+            <img src="/static/images/search.svg" @click="searchData">
         </div>
     </div>
 </template>

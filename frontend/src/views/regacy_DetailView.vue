@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="logo">
-                <img src="../assets/images/logo.png">
+                <img src="/static/images/logo.png">
                 {{this.before_page_data.id}}
         </div>
         <img class="item-img" :src="before_page_data.img">
-        <div class="sideTitleImg"><img src="../assets/images/poohSideTitle.gif"></div>
+        <div class="sideTitleImg"><img src="/static/images/poohSideTitle.gif"></div>
         <div class="Title"> </div>
         <link-view v-for="(a,index) in 10" :key="index"></link-view>
         <vue-p5
