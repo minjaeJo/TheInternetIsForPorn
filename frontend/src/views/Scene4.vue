@@ -53,17 +53,16 @@
 </template>
 
 <script>
-import YesOrNOModal from './popup/YesOrNoModal'
 export default {
     components: {
-        YesOrNOModal
+
     },
     mounted() {
 
     },
     data() {
         return {
-            yes_or_no: true
+
         }
     },
     methods: {

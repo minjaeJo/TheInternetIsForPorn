@@ -1,42 +1,48 @@
 <template>
-    <div :class="[shake ? 'shake-Ani' : 'window-container']" >
-        <div class="headImg">
-            <img src="/static/images/detailViewHeadImg.png">
+    <div>
+        <div v-if="yes_or_no" class='window-container'>
+            <video class="video" loop autoplay muted playsinline>
+                <source src='https://upload.wikimedia.org/wikipedia/en/d/dc/Pac-Man_Atari_2600_footage.ogv' type='video/ogg' />
+            브라우저가 video 태그를 지원하지 않음
+            </video>
+            <YesOrNOModal @startEvent="startEvent"/>
         </div>
-
-        <div class="bodyBlock">
-            <img class="left-img" src="/static/images/poofSideBar2.png">
-            <img class="right-img" src="/static/images/poofSideBar2.png" @click="nextScene">
-            <div class="bodyText">
-                {{this.before_page_data.id}}
-                <div class="subText">
-                    <img class="center-img" :src="before_page_data.img">
-                    {{mix_text}}
-                    {{mix_text}}
-                    {{mix_text}}
-
-
+        <div v-else :class="[shake ? 'shake-Ani' : 'window-container']">
+            <div class="headImg">
+                <img src="/static/images/detailViewHeadImg.png">
+            </div>
+            <div class="bodyBlock">
+                <img class="left-img" src="/static/images/poofSideBar2.png">
+                <img class="right-img" src="/static/images/poofSideBar2.png">
+                <div class="bodyText">
+                    {{this.before_page_data.id}}
+                    <div class="subText">
+                        <img class="center-img" :src="before_page_data.img">
+                        {{mix_text}}
+                        {{mix_text}}
+                        {{mix_text}}
+                    </div>
                 </div>
             </div>
-        </div>
             <DemoDogProfileModal></DemoDogProfileModal>
-
         </div>
-               
+    </div>
 </template>
 
 <script>
 import DemoDogProfileModal from './popup/DogProfileModal'
+import YesOrNOModal from './popup/YesOrNoModal'
 export default {
-  components: {
-      DemoDogProfileModal
-  },
-
+    components: {
+        DemoDogProfileModal,
+        YesOrNOModal
+    },
   data() {
     return {
-      before_page_data: '',
-      shake:false,
-      mix_text: ''
+        before_page_data: '',
+        shake:false,
+        mix_text: '',
+        yes_or_no: false
     }
   },
   mounted() {
@@ -72,9 +78,10 @@ export default {
     }, 17000);
   },
   methods: {
-      nextScene() {
-          this.$router.push({ name: 'Scene4', params: {query: this.before_page_data} })
-      }
+        nextScene() {
+            // this.$router.push({ name: 'Scene4', params: {query: this.before_page_data} })
+            this.yes_or_no = !this.yes_or_no
+        }
   }
 }
 </script>
@@ -159,5 +166,9 @@ export default {
 .subText{
     font-size: 18px;
     display: inline;
+}
+.video {
+    width: 100%;
+    height: auto;;
 }
 </style>
