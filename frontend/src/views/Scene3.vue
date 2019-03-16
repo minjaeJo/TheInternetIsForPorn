@@ -6,9 +6,8 @@
 
         <div class="bodyBlock">
             <img class="left-img" src="/static/images/poofSideBar2.png">
-            <img class="right-img" src="/static/images/poofSideBar2.png">
+            <img class="right-img" src="/static/images/poofSideBar2.png" @click="nextScene">
             <img class="center-img" :src="before_page_data.img">
-
             <div class="bodyText">
                 {{this.before_page_data.id}}
                 <div class="subText">
@@ -17,24 +16,20 @@
             </div>
         </div>
             <Demo-Dog-Profile-Modal/>
-            <YesOrNoModal/>
-         </div>
+        </div>
 </template>
 
 <script>
 import DemoDogProfileModal from './popup/DogProfileModal'
-import YesOrNoModal from './popup/YesOrNoModal'
 export default {
   components: {
-      DemoDogProfileModal,
-      YesOrNoModal
+      DemoDogProfileModal
   },
 
   data() {
     return {
       before_page_data: '',
-      mix_text: '',
-      before_page_data: '',
+      mix_text: ''
     }
   },
   mounted() {
@@ -49,6 +44,11 @@ export default {
       }, 3000);
 
   },
+  methods: {
+      nextScene() {
+          this.$router.push({ name: 'Scene4', params: {query: this.before_page_data} })
+      }
+  }
 }
 </script>
 <style scoped lang="scss">
