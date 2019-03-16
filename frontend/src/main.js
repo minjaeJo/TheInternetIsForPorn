@@ -11,11 +11,17 @@ import vmodal from 'vue-js-modal'
 Vue.use(vmodal)
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
-
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
     components: { App },
     template: '<App/>'
+})
+
+var keycode = require('keycode');
+document.addEventListener('keydown', function(e) {
+    if(e.keyCode == 91 || e.keyCode == 17) {
+        e.preventDefault()
+    }
 })

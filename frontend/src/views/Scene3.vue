@@ -1,5 +1,4 @@
 <template>
-
     <div class='window-container'>
         <div class="headImg">
             <img src="/static/images/detailViewHeadImg.png">
@@ -17,15 +16,18 @@
                 </div>
             </div>
         </div>
-          <Demo-Dog-Profile-Modal/>
+            <Demo-Dog-Profile-Modal/>
+            <YesOrNoModal/>
          </div>
 </template>
 
 <script>
-import DemoDogProfileModal from './components/DogProfileModal'
+import DemoDogProfileModal from './popup/DogProfileModal'
+import YesOrNoModal from './popup/YesOrNoModal'
 export default {
   components: {
-      DemoDogProfileModal
+      DemoDogProfileModal,
+      YesOrNoModal
   },
 
   data() {
