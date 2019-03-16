@@ -1,5 +1,5 @@
 <template>
-    <div class="window-container">
+    <div class="window-container" @click.ctrl="onClick">
         <div class="search-container">
             <div class="logo">
                 <img src="/static/images/logo.png">
@@ -31,6 +31,7 @@
             <img src="/static/images/dont_find.gif">
         </popup>
     </div>
+
 </template>
 
 <script>
@@ -86,6 +87,11 @@ export default {
         },
         sendDataForNextPage(data) {
             this.$router.push({ name: 'DetailView', params: { id : data.title, img: this.query_img, snippet : this.snippet_arr}})
+        },
+        onClick(event) {
+            console.log(event)
+
+            console.log('event')
         }
     }
 }

@@ -1,5 +1,4 @@
 <template>
-
     <div class='window-container'>
         <div class="headImg">
             <img src="/static/images/detailViewHeadImg.png">
@@ -22,7 +21,7 @@
 </template>
 
 <script>
-import DemoDogProfileModal from './components/DogProfileModal'
+import DemoDogProfileModal from './popup/DogProfileModal'
 export default {
   components: {
       DemoDogProfileModal
