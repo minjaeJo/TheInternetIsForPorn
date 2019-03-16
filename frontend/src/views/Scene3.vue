@@ -66,7 +66,7 @@ export default {
       }, 11500);
     setTimeout( () => {
         this.$modal.show('fifth-Popup')
-      }, 13000);      
+      }, 13000);
     setTimeout( () => {
           this.shake =true
     }, 13800);
@@ -81,6 +81,9 @@ export default {
         nextScene() {
             // this.$router.push({ name: 'Scene4', params: {query: this.before_page_data} })
             this.yes_or_no = !this.yes_or_no
+        },
+        startEvent() {
+             this.$router.push({ name: 'Scene4'})
         }
   }
 }

@@ -46,9 +46,6 @@
             </div>
         </div>
         <div class="center-box">Like it? Like it!</div>
-        <YesOrNOModal :visible="yes_or_no">
-            <div>씻빨</div>
-        </YesOrNOModal>
     </div>
 </template>
 
@@ -91,7 +88,7 @@ export default {
 .move1 {
     background: transparent;
     width:100%;
-    height:100%;    
+    height:100%;
     animation: move3 9s infinite linear both;
 }
 .move1 img{
@@ -103,9 +100,9 @@ export default {
 
 }
 .move2 {
-    background: transparent;   
+    background: transparent;
     width:100%;
-    height:100%;    
+    height:100%;
     animation: move3 9s infinite linear both;
     animation-delay: -1s;
 
@@ -121,7 +118,7 @@ export default {
 .move3 {
     background: transparent;
     width:100%;
-    height:100%;    
+    height:100%;
     animation: move3 9s infinite linear both;
     animation-delay: -2s;
 }
@@ -136,7 +133,7 @@ export default {
 .move4 {
     background: transparent;
     width:100%;
-    height:100%;    
+    height:100%;
     animation: move3 9s infinite linear both;
     animation-delay: -3s;
 }
@@ -151,7 +148,7 @@ export default {
 .move5 {
     background: transparent;
     width:100%;
-    height:100%;    
+    height:100%;
     animation: move3 9s infinite linear both;
     animation-delay: -4s;
 }
@@ -166,7 +163,7 @@ export default {
 .move6 {
     background: transparent;
     width:100%;
-    height:100%;    
+    height:100%;
     animation: move3 9s infinite linear both;
     animation-delay: -5s;
 }
@@ -181,7 +178,7 @@ export default {
 .move7 {
     background: transparent;
     width:100%;
-    height:100%;    
+    height:100%;
     animation: move3 9s infinite linear both;
     animation-delay: -6s;
 }
@@ -196,7 +193,7 @@ export default {
 .move8 {
     background: transparent;
     width:100%;
-    height:100%;    
+    height:100%;
     animation: move3 9s infinite linear both;
     animation-delay: -7s;
 }
@@ -211,7 +208,7 @@ export default {
 .move9 {
     background: transparent;
     width:100%;
-    height:100%;    
+    height:100%;
     animation: move3 9s infinite linear both;
     animation-delay: -8s;
 }
