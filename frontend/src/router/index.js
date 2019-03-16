@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Scene1 from '@/views/Scene1.vue'
 import Scene2 from '@/views/Scene2.vue'
 import Scene3 from '@/views/Scene3'
+import Scene4 from '@/views/Scene4'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
             path: '/scene3',
             name: 'Scene3',
             component: Scene3
+        },
+        {
+            path: '/scene4',
+            name: 'Scene4',
+            component: Scene4
         }
     ]
 })
