@@ -1,7 +1,7 @@
 <template>
   <modal 
-    name="dog-profile"
-    classes="cute-dog-profile-photo"
+    name="dog-profile2"
+    classes="cute-dog-profile-photo2"
     transition="scale"
     :top="Math.floor(Math.random()* 50) + 30 +'%'"
     :left="Math.floor(Math.random() * 40) + 40 +'%'"
@@ -37,10 +37,10 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-$Random-top : random(1400)*0.01;
-$Random-right : random(2000)*0.01+50;
-.cute-dog-profile-photo {
+<style lang="scss" scoped>
+$Random-top : random(1400)*0.01 + 50;
+$Random-right : random(2000)*0.01;
+.cute-dog-profile-photo2 {
   top: $Random-top + vw !important;
   left: $Random-right + vw !important;
   border-radius: 100%;
@@ -67,7 +67,7 @@ $Random-right : random(2000)*0.01+50;
 .scale-leave-active {
   opacity: 0;
   transform: scale(0.3) translateY(24px);
-  transform: translate(-5000px, 3000px);
+  transform: translate(5000px, -3000px);
 
 }
 </style>
