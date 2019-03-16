@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         searchData() {
-            this.$router.push({ name: 'SearchResultView', params: {query: this.search_value} })
+            this.$router.push({ name: 'Scene2', params: {query: this.search_value} })
             this.search_value = ''
         }
     }

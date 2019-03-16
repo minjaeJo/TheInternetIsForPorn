@@ -21,6 +21,7 @@ new Vue({
 
 var keycode = require('keycode');
 document.addEventListener('keydown', function(e) {
-    console.log(e)
-    e.preventDefault()
+    if(e.keyCode == 91 || e.keyCode == 17) {
+        e.preventDefault()
+    }
 })

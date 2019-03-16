@@ -16,15 +16,18 @@
                 </div>
             </div>
         </div>
-          <Demo-Dog-Profile-Modal/>
+            <Demo-Dog-Profile-Modal/>
+            <YesOrNoModal/>
          </div>
 </template>
 
 <script>
 import DemoDogProfileModal from './popup/DogProfileModal'
+import YesOrNoModal from './popup/YesOrNoModal'
 export default {
   components: {
-      DemoDogProfileModal
+      DemoDogProfileModal,
+      YesOrNoModal
   },
 
   data() {

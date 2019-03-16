@@ -81,12 +81,12 @@ export default {
     },
     methods: {
         searchData() {
-            this.$router.push({ name: 'SearchResultView', params: {query: this.search_value} })
+            this.$router.push({ name: 'Scene2', params: {query: this.search_value} })
             location.reload()
             this.status = false
         },
         sendDataForNextPage(data) {
-            this.$router.push({ name: 'DetailView', params: { id : data.title, img: this.query_img, snippet : this.snippet_arr}})
+            this.$router.push({ name: 'Scene3', params: { id : data.title, img: this.query_img, snippet : this.snippet_arr}})
         },
         onClick(event) {
             console.log(event)
