@@ -1,54 +1,69 @@
 <template>
-    <div class='window-container'>
-        <div class="headImg">
-            <img src="/static/images/detailViewHeadImg.png">
+    <div>
+        <div v-if="yes_or_no" class='window-container'>
+            <video class="video" loop autoplay muted playsinline>
+                <source src='https://upload.wikimedia.org/wikipedia/en/d/dc/Pac-Man_Atari_2600_footage.ogv' type='video/ogg' />
+            브라우저가 video 태그를 지원하지 않음
+            </video>
+            <YesOrNOModal @startEvent="startEvent"/>
         </div>
-
-        <div class="bodyBlock">
-            <img class="left-img" src="/static/images/poofSideBar2.png">
-            <img class="right-img" src="/static/images/poofSideBar2.png" @click="nextScene">
-            <img class="center-img" :src="before_page_data.img">
-            <div class="bodyText">
-                {{this.before_page_data.id}}
-                <div class="subText">
-                    {{mix_text}}
+        <div v-else class='window-container'>
+            <div class="headImg">
+                <img src="/static/images/detailViewHeadImg.png">
+            </div>
+            <div class="bodyBlock">
+                <img class="left-img" src="/static/images/poofSideBar2.png">
+                <img class="right-img" src="/static/images/poofSideBar2.png">
+                <img class="center-img" :src="before_page_data.img" @click="startEvent">
+                <div class="bodyText">
+                    {{this.before_page_data.id}}
+                    <div class="subText">
+                        {{mix_text}}
+                    </div>
                 </div>
             </div>
-        </div>
-            <Demo-Dog-Profile-Modal/>
+                <Demo-Dog-Profile-Modal/>
+            </div>
         </div>
 </template>
 
 <script>
 import DemoDogProfileModal from './popup/DogProfileModal'
+import YesOrNOModal from './popup/YesOrNoModal'
 export default {
-  components: {
-      DemoDogProfileModal
-  },
+    components: {
+        DemoDogProfileModal,
+        YesOrNOModal
+    },
 
-  data() {
-    return {
-      before_page_data: '',
-      mix_text: ''
+    data() {
+        return {
+            before_page_data: '',
+            mix_text: '',
+            yes_or_no: false
+        }
+    },
+    mounted() {
+            this.before_page_data = this.$route.params
+            var mix_arr = this.$route.params.snippet.sort(()=>{return 0.5 - Math.random()})
+            console.log(mix_arr)
+            mix_arr.forEach((element) => {
+                this.mix_text += element + ' '
+            })
+            setTimeout( () => {
+                this.$modal.show('dog-profile')
+            }, 3000);
+
+    },
+    methods: {
+        nextScene() {
+            // this.$router.push({ name: 'Scene4', params: {query: this.before_page_data} })
+        },
+        startEvent() {
+            this.yes_or_no = !this.yes_or_no
+            console.log('hi')
+        }
     }
-  },
-  mounted() {
-      this.before_page_data = this.$route.params
-      var mix_arr = this.$route.params.snippet.sort(()=>{return 0.5 - Math.random()})
-      console.log(mix_arr)
-      mix_arr.forEach((element) => {
-          this.mix_text += element + ' '
-      })
-      setTimeout( () => {
-        this.$modal.show('dog-profile')
-      }, 3000);
-
-  },
-  methods: {
-      nextScene() {
-          this.$router.push({ name: 'Scene4', params: {query: this.before_page_data} })
-      }
-  }
 }
 </script>
 <style scoped lang="scss">
@@ -108,5 +123,9 @@ export default {
 .subText{
     font-size: 18px;
     display: inline;
+}
+.video {
+    width: 100%;
+    height: auto;;
 }
 </style>
