@@ -1,5 +1,5 @@
 <template>
-    <div class='window-container'>
+    <div :class="[shake ? 'shake-Ani' : 'window-container']" >
         <div class="headImg">
             <img src="/static/images/detailViewHeadImg.png">
         </div>
@@ -7,16 +7,22 @@
         <div class="bodyBlock">
             <img class="left-img" src="/static/images/poofSideBar2.png">
             <img class="right-img" src="/static/images/poofSideBar2.png" @click="nextScene">
-            <img class="center-img" :src="before_page_data.img">
             <div class="bodyText">
                 {{this.before_page_data.id}}
                 <div class="subText">
+                    <img class="center-img" :src="before_page_data.img">
                     {{mix_text}}
+                    {{mix_text}}
+                    {{mix_text}}
+
+
                 </div>
             </div>
         </div>
-            <Demo-Dog-Profile-Modal/>
+            <DemoDogProfileModal></DemoDogProfileModal>
+
         </div>
+               
 </template>
 
 <script>
@@ -29,6 +35,7 @@ export default {
   data() {
     return {
       before_page_data: '',
+      shake:false,
       mix_text: ''
     }
   },
@@ -40,9 +47,29 @@ export default {
           this.mix_text += element + ' '
       })
       setTimeout( () => {
-        this.$modal.show('dog-profile')
-      }, 3000);
-
+        this.$modal.show('first-Popup')
+      }, 6000);
+      setTimeout( () => {
+        this.$modal.show('second-Popup')
+      }, 8000);
+    setTimeout( () => {
+        this.$modal.show('third-Popup')
+      }, 10000);
+    setTimeout( () => {
+        this.$modal.show('firth-Popup')
+      }, 11500);
+    setTimeout( () => {
+        this.$modal.show('fifth-Popup')
+      }, 13000);      
+    setTimeout( () => {
+          this.shake =true
+    }, 13800);
+    setTimeout( () => {
+          this.shake =false
+    }, 16800);
+    setTimeout( () => {
+          this.nextScene();
+    }, 17000);
   },
   methods: {
       nextScene() {
@@ -52,6 +79,30 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.shake-Ani{
+  animation: swing .3s infinite linear both;
+}
+@keyframes swing {
+  20% {
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
 
 .window-container {
     position: relative;

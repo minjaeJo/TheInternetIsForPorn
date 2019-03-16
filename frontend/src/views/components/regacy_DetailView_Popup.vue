@@ -48,7 +48,8 @@
          <div class="parent">
           <div class="box">Lorem</div>
           </div>
-          <Demo-Dog-Profile-Modal/>
+          <DemoDogProfileModal>          </DemoDogProfileModal>
+
 
          </div>
 </template>
