@@ -1,15 +1,20 @@
 <template>
     <div>
+
+        <div v-if="EndPopup" class='window-container'>
+                <img class="endPopupView" src="/static/images/EndPopup.gif">
+        </div>
         <div v-if="yes_or_no" class='window-container'>
-            <video class="video" loop autoplay muted playsinline>
+            <video class="video" loop autoplay muted playsinline >
                 <source src='https://upload.wikimedia.org/wikipedia/en/d/dc/Pac-Man_Atari_2600_footage.ogv' type='video/ogg' />
             브라우저가 video 태그를 지원하지 않음
             </video>
             <YesOrNOModal @startEvent="startEvent"/>
-        </div>
+        </div>       
         <div v-else :class="[shake ? 'shake-Ani' : 'window-container']">
             <div class="headImg">
                 <img src="/static/images/detailViewHeadImg.png">
+
             </div>
             <div class="bodyBlock">
                 <img class="left-img" src="/static/images/poofSideBar2.png">
@@ -18,14 +23,21 @@
                     {{this.before_page_data.id}}
                     <div class="subText">
                         <img class="center-img" :src="before_page_data.img">
+                        <div class="arrow">
+                             <img src="/static/images/detailViewPopUp.png">
+                        </div>
                         {{mix_text}}
                         {{mix_text}}
                         {{mix_text}}
+                        {{mix_text}}
+
                     </div>
                 </div>
             </div>
             <DemoDogProfileModal></DemoDogProfileModal>
         </div>
+               
+
     </div>
 </template>
 
@@ -42,7 +54,8 @@ export default {
         before_page_data: '',
         shake:false,
         mix_text: '',
-        yes_or_no: false
+        yes_or_no: false,
+        EndPopup: false
     }
   },
   mounted() {
@@ -52,7 +65,7 @@ export default {
       mix_arr.forEach((element) => {
           this.mix_text += element + ' '
       })
-      setTimeout( () => {
+     setTimeout( () => {
         this.$modal.show('first-Popup')
       }, 6000);
       setTimeout( () => {
@@ -72,10 +85,12 @@ export default {
     }, 13800);
     setTimeout( () => {
           this.shake =false
+          this.EndPopup = true
     }, 16800);
     setTimeout( () => {
+          this.EndPopup = false
           this.nextScene();
-    }, 17000);
+    }, 18800);
   },
   methods: {
         nextScene() {
@@ -89,7 +104,16 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.endPopupView{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+
+}
 .shake-Ani{
+  background: #000;
+  position: fixed;
   animation: swing .3s infinite linear both;
 }
 @keyframes swing {
@@ -130,14 +154,28 @@ export default {
     width:100%;
 }
 .arrow {
-    animation: arrow 1.2s;
+    z-index: 100000;
+    animation: arrow 1.2s infinite linear both;
 }
 .arrow img{
+
     width: 30%;
-    position: fixed;
-    top: 0%;
-    left: 35%;
+    position: absolute;
+    top: 29%;
+    left: 42%;
 }
+
+@keyframes arrow {
+  from, to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+
 .bodyBlock {
     margin: 20px;
     display: inline;
@@ -146,27 +184,38 @@ export default {
  }
  .bodyBlock .left-img{
     float: left;
-    width: 12%;
+    width: 14%;
     padding-right: 30px;
+    margin-right: 20px;
+
  }
 .bodyBlock .right-img{
     float: right;
     right: -20px;
-    width: 12%;
+    width: 25%;
 }
 .bodyBlock .center-img{
+    height: 600px;
     position:static;
     top: 80px;
     left: auto;
     float: left;
-    width: 30%;
+    width: 100%;
+    margin-bottom: 20px;
 
 }
 .bodyText{
-    font-size: 30px;
+    margin: 20px;
+    margin-right: 40px;
+    margin-left: inherit;
+    font-size: 36px;
+    font-weight: bold;
     display: grid;
 }
 .subText{
+    font-weight: normal;
+    text-align: justify;
+    margin-right: inherit;
     font-size: 18px;
     display: inline;
 }

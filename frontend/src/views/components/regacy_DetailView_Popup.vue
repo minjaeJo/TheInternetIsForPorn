@@ -359,6 +359,16 @@ $_precision: 10;
     margin-top: 50px;
     width:100%;
 }
+@keyframes arrow {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
 .arrow {
     animation: arrow 1.2s;
 }

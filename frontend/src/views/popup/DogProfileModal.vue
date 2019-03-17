@@ -163,6 +163,7 @@ $Random-right3 : random(2000)*0.01+60;
 $Random-top4 : random(500)*0.01;
 $Random-right4 : random(500)*0.01;
 .firth-Class {
+  position: fixed;
   top: $Random-top4 + vw !important;
   left: $Random-right4 + vw !important;
   border-radius: 100%;
@@ -176,6 +177,7 @@ $Random-right4 : random(500)*0.01;
   }
 }
 .fifth-Class {
+  position: fixed;
   top: 40%;
   left: 40%;
   border-radius: 100%;

@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div >
+        
         <div class="frame">
             <div class="move1">
                 <img src="/static/images/tenor1.gif">
@@ -45,44 +46,74 @@
                 <img src="/static/images/tenor9.gif">
             </div>
         </div>
-        <div class="center-box">Like it? Like it!</div>
+        <transition name="fade">
+            <div v-if="show" class="center-box">     
+                <img src="/static/images/internetHub.png">
+            </div>
+        </transition>
+
     </div>
 </template>
 
 <script>
-export default {
-    components: {
+import MarqueeText from 'vue-marquee-text-component'
+import VueP5 from 'vue-p5'
 
+export default {
+
+    components: {
+        MarqueeText
     },
+
     mounted() {
+     setTimeout( () => {
+         this.show = true;
+      }, 100);        
 
     },
     data() {
         return {
-
+            show: false
         }
     },
     methods: {
-
+    
+    
     }
 }
 </script>
 
 <style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 .center-box {
     color: yellow;
     z-index: 10000;
-    position: absolute;
-    top: 48%;
-    left: 38%;
+    position: fixed;
+    top: 40%;
+    left: 25%;
+    width: 50%;
     font-size: 50px;
 }
+.center-box img{
+    position: relative;
+    margin-left: 70px;
+    margin-right: auto;
+
+    vertical-align: center;
+    width: 85%;
+}
 .frame{
-    position:absolute;
+    position: fixed;
     width:100%;
     height:100%;
 }
 .frame:nth-child(1){
+    
     background: #000;
 }
 .move1 {

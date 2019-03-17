@@ -30,15 +30,19 @@
         <popup :visible.sync="visible" style="position: fixed; right: 0px; bottom: 0px;" class="arrow">
             <img src="/static/images/dont_find.gif">
         </popup>
+        <DemoDogProfileModal2></DemoDogProfileModal2>
+
     </div>
 
 </template>
 
 <script>
 import Popup from './components/Popup'
+import DemoDogProfileModal2 from './popup/DogProfileModal2'
 export default {
     components: {
-        Popup
+        Popup,
+        DemoDogProfileModal2
     },
     data() {
         return {
@@ -86,11 +90,13 @@ export default {
             this.status = false
         },
         sendDataForNextPage(data) {
-            this.$router.push({ name: 'Scene3', params: { id : data.title, img: this.query_img, snippet : this.snippet_arr}})
+            this.$modal.show('loading-Popup')
+            setTimeout( () => {
+                this.$router.push({ name: 'Scene3', params: { id : data.title, img: this.query_img, snippet : this.snippet_arr}})
+            }, 5000);
         },
         onClick(event) {
             console.log(event)
-
             console.log('event')
         }
     }

@@ -27,7 +27,7 @@ export default {
 $popup: 'popup';
 .#{$popup} {
     position: fixed;
-    top: 15vh;
+    top: 40%;
     left: 38vw;
     width: 440px;
     height: 270px;
