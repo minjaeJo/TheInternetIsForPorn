@@ -10,11 +10,10 @@
             브라우저가 video 태그를 지원하지 않음
             </video>
             <YesOrNOModal @startEvent="startEvent"/>
-        </div>       
+        </div>
         <div v-else :class="[shake ? 'shake-Ani' : 'window-container']">
             <div class="headImg">
                 <img src="/static/images/detailViewHeadImg.png">
-
             </div>
             <div class="bodyBlock">
                 <img class="left-img" src="/static/images/poofSideBar2.png">
@@ -26,18 +25,12 @@
                         <div class="arrow">
                              <img src="/static/images/detailViewPopUp.png">
                         </div>
-                        {{mix_text}}
-                        {{mix_text}}
-                        {{mix_text}}
-                        {{mix_text}}
-
+                        <span v-for="i in 4" :key="i">{{mix_text}}</span>
                     </div>
                 </div>
             </div>
             <DemoDogProfileModal></DemoDogProfileModal>
         </div>
-               
-
     </div>
 </template>
 
@@ -55,50 +48,49 @@ export default {
         shake:false,
         mix_text: '',
         yes_or_no: false,
-        EndPopup: false
+        EndPopup: false,
+        mix_arr: []
     }
   },
   mounted() {
-      this.before_page_data = this.$route.params
-      var mix_arr = this.$route.params.snippet.sort(()=>{return 0.5 - Math.random()})
-      console.log(mix_arr)
-      mix_arr.forEach((element) => {
-          this.mix_text += element + ' '
-      })
-     setTimeout( () => {
-        this.$modal.show('first-Popup')
-      }, 6000);
-      setTimeout( () => {
-        this.$modal.show('second-Popup')
-      }, 8000);
-    setTimeout( () => {
-        this.$modal.show('third-Popup')
-      }, 10000);
-    setTimeout( () => {
-        this.$modal.show('firth-Popup')
-      }, 11500);
-    setTimeout( () => {
-        this.$modal.show('fifth-Popup')
-      }, 13000);
-    setTimeout( () => {
-          this.shake =true
-    }, 13800);
-    setTimeout( () => {
-          this.shake =false
-          this.EndPopup = true
-    }, 16800);
-    setTimeout( () => {
-          this.EndPopup = false
-          this.nextScene();
-    }, 18800);
+        this.before_page_data = this.$route.params
+        this.mix_arr = this.$route.params.snippet.sort(()=>{return 0.5 - Math.random()})
+        this.mix_arr.map((element) => {
+            this.mix_text += element + ' '
+        })
+        setTimeout( () => {
+            this.$modal.show('first-Popup')
+        }, 6000);
+        setTimeout( () => {
+            this.$modal.show('second-Popup')
+        }, 8000);
+        setTimeout( () => {
+            this.$modal.show('third-Popup')
+        }, 10000);
+        setTimeout( () => {
+            this.$modal.show('firth-Popup')
+        }, 11500);
+        setTimeout( () => {
+            this.$modal.show('fifth-Popup')
+        }, 13000);
+        setTimeout( () => {
+            this.shake =true
+        }, 13800);
+        setTimeout( () => {
+            this.shake =false
+            this.EndPopup = true
+        }, 16800);
+        setTimeout( () => {
+            this.EndPopup = false
+            this.nextScene();
+        }, 18800);
   },
   methods: {
         nextScene() {
-            // this.$router.push({ name: 'Scene4', params: {query: this.before_page_data} })
             this.yes_or_no = !this.yes_or_no
         },
         startEvent() {
-             this.$router.push({ name: 'Scene4'})
+            this.$router.push({ name: 'Scene4', params: {snippet: this.mix_arr} })
         }
   }
 }

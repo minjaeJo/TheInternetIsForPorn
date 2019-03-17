@@ -1,57 +1,16 @@
 <template>
     <div >
-        
-        <div class="frame">
-            <div class="move1">
-                <img src="/static/images/tenor1.gif">
-            </div>
-        </div>
-         <div class="frame">
-            <div class="move2">
-                <img src="/static/images/tenor2.gif">
-            </div>
-        </div>
-         <div class="frame">
-            <div class="move3">
-                <img src="/static/images/tenor3.gif">
-            </div>
-        </div>
-         <div class="frame">
-            <div class="move4">
-                <img src="/static/images/tenor4.gif">
-            </div>
-        </div>
-         <div class="frame">
-            <div class="move5">
-                <img src="/static/images/tenor5.gif">
-            </div>
-        </div>
-         <div class="frame">
-            <div class="move6">
-                <img src="/static/images/tenor6.gif">
-            </div>
-        </div>
-         <div class="frame">
-            <div class="move7">
-                <img src="/static/images/tenor7.gif">
-            </div>
-        </div>
-         <div class="frame">
-            <div class="move8">
-                <img src="/static/images/tenor8.gif">
-            </div>
-        </div>
-         <div class="frame">
-            <div class="move9">
-                <img src="/static/images/tenor9.gif">
+
+        <div class="frame" v-for="i in 9" :key="i">
+            <div :class="'move'+i">
+                <img :src="'/static/images/tenor'+i+'.gif'">
             </div>
         </div>
         <transition name="fade">
-            <div v-if="show" class="center-box">     
+            <div v-if="show" class="center-box">
                 <img src="/static/images/internetHub.png">
             </div>
         </transition>
-
     </div>
 </template>
 
@@ -60,25 +19,27 @@ import MarqueeText from 'vue-marquee-text-component'
 import VueP5 from 'vue-p5'
 
 export default {
-
     components: {
         MarqueeText
     },
-
-    mounted() {
-     setTimeout( () => {
-         this.show = true;
-      }, 100);        
-
-    },
     data() {
         return {
-            show: false
+            show: false,
+            snippet: '',
+            mix_arr: []
         }
     },
+    mounted() {
+        this.snippet = this.$route.params.snippet
+        this.mixmixix()
+        setTimeout( () => {
+            this.show = true;
+        }, 100);
+    },
     methods: {
-    
-    
+        mixmixix() {
+
+        }
     }
 }
 </script>
@@ -113,7 +74,7 @@ export default {
     height:100%;
 }
 .frame:nth-child(1){
-    
+
     background: #000;
 }
 .move1 {
