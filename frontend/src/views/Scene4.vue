@@ -11,11 +11,13 @@
             </div>
         </transition>
         <div id="popup-container">
-            <div :id="index" style="display:none" v-for="(text,index) in snippet" :key="index+500">
+            <div :id="index+'text'" style="display:none" v-for="(text,index) in snippet" :key="index+500">
                 <TextPopup :style="{top: Math.floor(Math.random()*100)+'%', left: Math.floor(Math.random() *100) +'%'}" :text="text"></TextPopup>
             </div>
         </div>
-        <!-- <ImagePopup :img="'/static/images/logo.png'" :text="'희더기'" style="z-index:10000"></ImagePopup> -->
+        <div :id="index+'img'" style="display:none" v-for="(text,index) in snippet" :key="index+5000">
+            <ImagePopup :img="'/static/images/logo.png'" :style="{top: Math.floor(Math.random()*100)+'%', left: Math.floor(Math.random() *100) +'%'}" style="z-index:90000"></ImagePopup>
+        </div>
     </div>
 </template>
 <script>
@@ -40,8 +42,15 @@ export default {
             this.show = true;
         }, 100);
         setTimeout( () => {
-            this.loopPopup(0)
+            this.loopTextPopup(0)
         }, 7000);
+        setTimeout( () => {
+            this.loopImgPopup(0)
+        }, 7000);
+        setTimeout( () => {
+            this.$router.push({ name: 'Scene1'})
+        }, 20000);
+
     },
     methods: {
         randomTop: function () {
@@ -50,15 +59,22 @@ export default {
         randomleft: function () {
             return Math.floor(Math.random() * 10000)/100 + vw
         },
-        loopPopup(i) {
+        loopTextPopup(i) {
             setTimeout(()=> {
-                $('#'+i).css("display","initial")
+                $('#'+i+'text').css("display","initial")
                 console.log('#'+i)
                 if ( this.snippet.length> ++i ) {
-                    this.loopPopup(i);
-                    console.log(i)
+                    this.loopTextPopup(i);
                 }
-            }, 50)
+            }, 30)
+        },
+        loopImgPopup(i) {
+            setTimeout(()=> {
+                $('#'+i+'img').css("display","initial")
+                if ( 10> ++i ) {
+                    this.loopImgPopup(i);
+                }
+            }, 2000)
         }
     }
 }
