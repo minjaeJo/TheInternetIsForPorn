@@ -15,7 +15,7 @@
       >
         HIDE THE DOGGY
       </div>
-        <img src="/static/images/loading.gif" />
+        <img src="/static/images/loading2.gif" />
     </modal>
   </div>
 </template>
