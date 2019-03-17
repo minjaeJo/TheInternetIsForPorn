@@ -10,7 +10,7 @@
                 <img src="/static/images/internetHub.png">
             </div>
         </transition>
-        <TextPopup v-for="i in 50" :key="i+500" :style="{top: Math.floor(Math.random()* 50) + 30 +'%', left: Math.floor(Math.random() * 40) + 40 +'%', 'z-index':10000+i}" :text="text"></TextPopup>
+        <TextPopup v-for="(text,index) in snippet" :key="index+500" :style="{top: Math.floor(Math.random()* 50) + 30 +'%', left: Math.floor(Math.random() * 40) + 40 +'%', 'z-index':10000+i}" :text="text"></TextPopup>
     </div>
 </template>
 <script>
@@ -23,8 +23,6 @@ export default {
         return {
             show: false,
             snippet: '',
-            mix_arr: [],
-            text: '히더기도 연애하고 싶어!'
         }
     },
     mounted() {
