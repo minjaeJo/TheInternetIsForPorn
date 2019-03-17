@@ -14,7 +14,7 @@
             <div>검색 결과가 없습니다. 다시 시도해주세요</div>
         </div>
         <div v-else>
-            <div class="item-block" v-for="(data,index) in search_result" :key="index" @click="sendDataForNextPage(data)">
+            <div :class="[ishover ? 'item-block' : 'item-block-hover']" v-for="(data,index) in search_result" :key="index" @click="sendDataForNextPage(data)">
                 <div v-if="index==3" class="ADImage">
                     <img src="/static/images/poofAD.png">
                 </div>
@@ -46,6 +46,7 @@ export default {
     },
     data() {
         return {
+            ishover : false,
             search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q=',
             search_result: [],
             search_value: '',
@@ -82,6 +83,9 @@ export default {
         setTimeout( () => {
             this.visible = true
         }, 3000);
+        setTimeout( () => {
+            this.ishover = true
+        }, 5000);
     },
     methods: {
         searchData() {
@@ -133,7 +137,13 @@ export default {
     padding-left: 100px;
     cursor: pointer;
 }
-.item-block:hover{
+.item-block-hover{
+    margin: auto;
+    padding-bottom: 30px;
+    padding-left: 100px;
+    cursor: pointer;
+}
+.item-block-hover:hover{
     visibility: hidden;
 }
 .title{

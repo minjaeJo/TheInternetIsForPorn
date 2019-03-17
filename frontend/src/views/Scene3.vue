@@ -6,7 +6,7 @@
         </div>
         <div v-if="yes_or_no" class='window-container'>
             <video class="video" loop autoplay muted playsinline >
-                <source src='https://upload.wikimedia.org/wikipedia/en/d/dc/Pac-Man_Atari_2600_footage.ogv' type='video/ogg' />
+                <source src='/static/images/backGroundVideo.mp4' type='video/ogg' />
             브라우저가 video 태그를 지원하지 않음
             </video>
             <YesOrNOModal @startEvent="startEvent"/>
