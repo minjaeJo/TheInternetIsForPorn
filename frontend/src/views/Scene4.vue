@@ -1,6 +1,5 @@
 <template>
     <div >
-
         <div class="frame" v-for="i in 9" :key="i">
             <div :class="'move'+i">
                 <img :src="'/static/images/tenor'+i+'.gif'">
@@ -11,22 +10,21 @@
                 <img src="/static/images/internetHub.png">
             </div>
         </transition>
+        <TextPopup style="z-index:10000" :text="text"></TextPopup>
     </div>
 </template>
-
 <script>
-import MarqueeText from 'vue-marquee-text-component'
-import VueP5 from 'vue-p5'
-
+import TextPopup from './popup/TextPopup'
 export default {
     components: {
-        MarqueeText
+        TextPopup
     },
     data() {
         return {
             show: false,
             snippet: '',
-            mix_arr: []
+            mix_arr: [],
+            text: '히더기 연애 시켜줘!'
         }
     },
     mounted() {
