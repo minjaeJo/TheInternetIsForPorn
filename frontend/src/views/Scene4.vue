@@ -12,15 +12,18 @@
         </transition>
         <div v-if="showPopup">
             <div  v-for="(text,index) in snippet" :key="index+500" stagger="5000" >
-                <TextPopup :style="{top: Math.floor(Math.random()*100)+'%', left: Math.floor(Math.random() *100) +'%', 'z-index':10000+i}" :text="text"></TextPopup>
+                <TextPopup :style="{top: Math.floor(Math.random()*100)+'%', left: Math.floor(Math.random() *100) +'%', 'z-index':10000+index}" :text="text"></TextPopup>
             </div>
         </div>
+        <ImagePopup :img="'/static/images/logo.png'" :text="'희더기'" style="z-index:10000"></ImagePopup>
     </div>
 </template>
 <script>
 import TextPopup from './popup/TextPopup'
+import ImagePopup from './popup/ImagePopup'
 export default {
     components: {
+        ImagePopup,
         TextPopup
     },
     data() {
