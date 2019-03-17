@@ -14,11 +14,11 @@
             <div>검색 결과가 없습니다. 다시 시도해주세요</div>
         </div>
         <div v-else>
-            <div class="item-block" v-for="(data,index) in search_result" :key="index">
+            <div class="item-block" v-for="(data,index) in search_result" :key="index" @click="sendDataForNextPage(data)">
                 <div v-if="index==3" class="ADImage">
                     <img src="/static/images/poofAD.png">
                 </div>
-                <div class="title" @click="sendDataForNextPage(data)">{{data.title}}</div>
+                <div class="title">{{data.title}}</div>
                 <div class="link">{{data.link}}</div>
                 <div class="bodyText">{{data.snippet}}</div>
             </div>

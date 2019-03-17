@@ -10,7 +10,11 @@
                 <img src="/static/images/internetHub.png">
             </div>
         </transition>
-        <TextPopup v-for="(text,index) in snippet" :key="index+500" :style="{top: Math.floor(Math.random()* 50) + 30 +'%', left: Math.floor(Math.random() * 40) + 40 +'%', 'z-index':10000+i}" :text="text"></TextPopup>
+        <div v-if="showPopup">
+            <div  v-for="(text,index) in snippet" :key="index+500" stagger="5000" >
+                <TextPopup :style="{top: Math.floor(Math.random()*100)+'%', left: Math.floor(Math.random() *100) +'%', 'z-index':10000+i}" :text="text"></TextPopup>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -23,19 +27,19 @@ export default {
         return {
             show: false,
             snippet: '',
+            showPopup: false
         }
     },
     mounted() {
         this.snippet = this.$route.params.snippet
-        this.mixmixix()
         setTimeout( () => {
             this.show = true;
         }, 100);
+        setTimeout( () => {
+            this.showPopup = true;
+        }, 7000);
     },
     methods: {
-        mixmixix() {
-
-        },
         randomTop: function () {
             return Math.floor(Math.random() * 10000)/100 + vw
         },
@@ -56,7 +60,6 @@ export default {
 }
 .center-box {
     color: yellow;
-    z-index: 10000;
     position: fixed;
     top: 40%;
     left: 25%;

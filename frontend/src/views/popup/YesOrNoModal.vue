@@ -26,6 +26,8 @@ export default {
 <style scoped lang="scss">
 $popup: 'popup';
 .#{$popup} {
+    overflow: hidden;
+
     position: fixed;
     top: 40%;
     left: 38vw;
@@ -48,14 +50,15 @@ $popup: 'popup';
         position: relative;
         text-align: center;
         color: #c6090b;
+        height: 60%;
         text-border: 1px #000;
         text-shadow: 2px 2px 2px black;
     }
     &-body {
+        height: 40%;
         padding: 25px;
         min-height: 150px;
         max-height: 412px;
-        overflow-y: scroll;
         text-align: center;
     }
 }

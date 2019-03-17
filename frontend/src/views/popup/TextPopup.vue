@@ -13,9 +13,6 @@
 export default {
     props:['text'],
     methods: {
-        startEvent() {
-            this.$emit('startEvent')
-        }
     },
 }
 </script>
@@ -31,6 +28,7 @@ export default {
     border-radius: 5px;
     overflow: auto;
     margin: 0;
+    border: 1px solid #000;
 }
 .popup-header {
     background: #d4d4d4;
