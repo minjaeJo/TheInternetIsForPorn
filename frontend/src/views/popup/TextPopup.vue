@@ -5,16 +5,37 @@
             <div class="btn yellow"></div>
             <div class="btn green"></div>
         </div>
-        <div class="popup-body">{{text}}</div>
+        <div class="popup-body" :style="{color: color, background: background}">{{text}}</div>
     </div>
 </template>
 
 <script>
 export default {
     props:['text'],
+    data() {
+        return {
+            color_arr: [
+                { background: '#C23B2A', color:'#EAA932' },
+                { background: '#A69F82', color:'#334C54' },
+                { background: '#3788BC', color:'#F5C62E' },
+                { background: '#FEF6E8', color:'#E57F7C' },
+                { background: '#32435F', color:'#EB9772' }
+            ],
+            background: '#C23B2A',
+            color: '#EAA932'
+        }
+    },
+    mounted() {
+        this.randomColor()
+    },
     methods: {
         startEvent() {
             this.$emit('startEvent')
+        },
+        randomColor() {
+            var random = Math.floor(Math.random() * 5)
+            this.background = this.color_arr[random].background
+            this.color = this.color_arr[random].color
         }
     },
 }

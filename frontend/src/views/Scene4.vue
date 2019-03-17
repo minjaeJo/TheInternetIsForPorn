@@ -10,13 +10,16 @@
                 <img src="/static/images/internetHub.png">
             </div>
         </transition>
-        <TextPopup v-for="(text,index) in snippet" :key="index+500" :style="{top: Math.floor(Math.random()* 50) + 30 +'%', left: Math.floor(Math.random() * 40) + 40 +'%', 'z-index':10000+i}" :text="text"></TextPopup>
+        <TextPopup v-for="(text,index) in snippet" :key="index+500" :style="{top: Math.floor(Math.random()* 50) + 30 +'%', left: Math.floor(Math.random() * 40) + 40 +'%', 'z-index':10000+index }" :text="text"></TextPopup>
+        <ImagePopup :img="'/static/images/logo.png'" :text="'희더기'" style="z-index:10000"></ImagePopup>
     </div>
 </template>
 <script>
 import TextPopup from './popup/TextPopup'
+import ImagePopup from './popup/ImagePopup'
 export default {
     components: {
+        ImagePopup,
         TextPopup
     },
     data() {
@@ -27,15 +30,9 @@ export default {
     },
     mounted() {
         this.snippet = this.$route.params.snippet
-        this.mixmixix()
         setTimeout( () => {
             this.show = true;
         }, 100);
-    },
-    methods: {
-        mixmixix() {
-
-        }
     }
 }
 </script>
