@@ -43,7 +43,8 @@ export default {
     height: calc(100% - 28px);
     background: #fefec4;
     text-align: center;
-    font-size: 20px;
+    font-size: 23px;
+    font-weight: 700;
     padding-top: 5vh;
 }
 .btn {
