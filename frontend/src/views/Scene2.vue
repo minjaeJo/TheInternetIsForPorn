@@ -131,7 +131,10 @@ export default {
     margin: auto;
     padding-bottom: 30px;
     padding-left: 100px;
-
+    cursor: pointer;
+}
+.item-block:hover{
+    visibility: hidden;
 }
 .title{
 

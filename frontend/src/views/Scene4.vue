@@ -37,7 +37,14 @@ export default {
     methods: {
         mixmixix() {
 
-        }
+        },
+        randomTop: function () {
+            return Math.floor(Math.random() * 10000)/100 + vw
+        },
+        randomleft: function () {
+            return Math.floor(Math.random() * 10000)/100 + vw
+        },
+    
     }
 }
 </script>

@@ -5,7 +5,9 @@
       classes="cute-dog-profile-photo"
       transition="scale"
       :height="500"
-      :width="500"
+      :width="500"      
+      @before-close="beforeClose">
+
     >
       <div 
         slot="top-right"
@@ -20,7 +22,21 @@
 
 <script>
 export default {
-  name: 'InputFocusModal'
+  name: 'InputFocusModal',
+    data() {
+      return {
+        cantClose : true
+      }
+    },
+    methods: {
+      beforeClose (event) {
+        if (this.cantClose) {
+          event.stop()
+        }else{
+
+        };
+      }
+  }
 }
 </script>
 <style lang="scss">
