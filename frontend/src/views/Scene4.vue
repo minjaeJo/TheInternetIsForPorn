@@ -1,5 +1,10 @@
 <template>
     <div >
+        <div :class="[beforeEndging ? 'blink' : 'blink-none']">
+        </div>
+        <video v-if="startVideo" autoplay muted playsinline class="video">
+            <source src='/static/images/EndingVideo.mp4' type='video/mp4' />
+        </video>
         <div class="frame" v-for="i in 9" :key="i">
             <div :class="'move'+i">
                 <img :src="'/static/images/tenor'+i+'.gif'">
@@ -15,8 +20,8 @@
                 <TextPopup :style="{top: Math.floor(Math.random()*100)+'%', left: Math.floor(Math.random() *100) +'%'}" :text="text"></TextPopup>
             </div>
         </div>
-        <div :id="index+'img'" style="display:none" v-for="(text,index) in snippet" :key="index+5000">
-            <ImagePopup :img="'/static/images/logo.png'" :style="{top: Math.floor(Math.random()*100)+'%', left: Math.floor(Math.random() *100) +'%'}" style="z-index:90000"></ImagePopup>
+        <div :id="index+'img'" style="display:none" v-for="(text,index) in 10" :key="index+5000">
+            <ImagePopup :img="'/static/images/logo.png'" :style="{top: imageTop[index] + '%', left: imageLeft[index] +'%'}" style="z-index:90000"></ImagePopup>
         </div>
     </div>
 </template>
@@ -30,10 +35,15 @@ export default {
     },
     data() {
         return {
+            imageTop: [5,50,Math.floor(Math.random()*70),3,Math.floor(Math.random()*70),20,0,60,Math.floor(Math.random()*70)],
+            imageLeft: [72,10,Math.floor(Math.random()*70),2,Math.floor(Math.random()*70),40,55,75,Math.floor(Math.random()*70)],
             show: false,
             snippet: '',
             showPopup: false,
-            popup: ''
+            popup: '',
+            beforeEndging: false,
+            startVideo: false
+
         }
     },
     mounted() {
@@ -48,8 +58,32 @@ export default {
             this.loopImgPopup(0)
         }, 7000);
         setTimeout( () => {
-            this.$router.push({ name: 'Scene1'})
+            this.beforeEndging = true
         }, 20000);
+        setTimeout( () => {
+            this.beforeEndging = false
+        }, 21000);
+        setTimeout( () => {
+            this.beforeEndging = true
+        }, 21200);
+        setTimeout( () => {
+            this.beforeEndging = false
+        }, 21300);
+        setTimeout( () => {
+            this.beforeEndging = true
+        }, 21600);
+        setTimeout( () => {
+            this.beforeEndging = false
+        }, 21700);
+        setTimeout( () => {
+            this.beforeEndging = true
+        }, 21850);
+        setTimeout( () => {
+            this.startVideo = true
+        }, 21950);
+        setTimeout( () => {
+           this.$router.push({ name: 'Scene1'})
+        }, 38000);
 
     },
     methods: {
@@ -74,13 +108,30 @@ export default {
                 if ( 10> ++i ) {
                     this.loopImgPopup(i);
                 }
-            }, 2000)
+            }, 1000)
         }
     }
 }
 </script>
 
 <style scoped>
+.video {
+    z-index:9000000;
+    position: fixed;
+    width: 100%;
+    height: auto;;
+}
+.blink{
+    width: 100%;
+    background: #000;
+    height: 100%;
+    position: fixed;
+    z-index:900000;
+}
+.blink-none{   
+    width: 0%;
+    height: 0%;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
@@ -108,8 +159,7 @@ export default {
     width:100%;
     height:100%;
 }
-.frame:nth-child(1){
-
+.frame:nth-child(2){
     background: #000;
 }
 .move1 {

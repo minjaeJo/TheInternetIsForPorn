@@ -45,6 +45,8 @@ export default {
     top: 40%;
     left: 40%;
     border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 100%;
+
     img {
       position: absolute;
       left : -2px;
