@@ -18,10 +18,12 @@
             <div class="bodyBlock">
 
                 <img class="rightAD" src="/static/images/Scene3_RightAD.gif">
-                <img class="bottomAD" src="/static/images/Scene3_BottomAD.gif" @click="a">
-z               <img class="left-img" src="/static/images/poofSideBar2.png">
-                <img class="right-img" src="/static/images/poofSideBar2.png">
+                <img class="bottomAD" src="/static/images/Scene3_BottomImg.gif" @click="a">
+z               <img class="left-img" src="/static/images/Scene3LeftAD.png">
+                <img class="right-img" src="/static/images/Scene3_SideAD.png">
                 <div class="bodyText">
+                    {{this.before_page_data.id}}
+                    {{this.before_page_data.id}}
                     {{this.before_page_data.id}}
                     <div class="subText">
                         <img class="center-img" :src="before_page_data.img">
@@ -29,6 +31,7 @@ z               <img class="left-img" src="/static/images/poofSideBar2.png">
                              <img src="/static/images/detailViewPopUp.png">
                         </div>
                         <span v-for="i in 4" :key="i">{{mix_text}}</span>
+                        <img class="bottom-img" src="/static/images/Scene3BottomAD.png">
                     </div>
                 </div>
             </div>
@@ -182,9 +185,9 @@ export default {
  }
  .bodyBlock .left-img{
     float: left;
-    width: 14%;
+    width: 10%;
     padding-right: 30px;
-    margin-right: 20px;
+    margin-right: 37px;
 
  }
 .bodyBlock .right-img{
@@ -202,6 +205,17 @@ export default {
     margin-bottom: 20px;
 
 }
+.subText .bottom-img{
+    position: static;
+    top: 75%;
+    left: auto;
+    float: left;
+    height: 25%;
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+
 .bodyBlock .rightAD{
     position:absolute;
     width: 25%;
@@ -210,8 +224,8 @@ export default {
 .bodyBlock .bottomAD{
     position: absolute;
     width: 25%;
-    left: 17%;
-    top: 740px;
+    left: 14%;
+    top: 770px;
 
 }
 

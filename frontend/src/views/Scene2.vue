@@ -83,9 +83,6 @@ export default {
         setTimeout( () => {
             this.visible = true
         }, 3000);
-        setTimeout( () => {
-            this.ishover = true
-        }, 5000);
     },
     methods: {
         searchData() {
@@ -142,9 +139,6 @@ export default {
     padding-bottom: 30px;
     padding-left: 100px;
     cursor: pointer;
-}
-.item-block-hover:hover{
-    visibility: hidden;
 }
 .title{
 
