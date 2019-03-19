@@ -185,9 +185,9 @@ export default {
  }
  .bodyBlock .left-img{
     float: left;
-    width: 15%;
+    width: 10%;
     padding-right: 30px;
-    margin-right: 30px;
+    margin-right: 37px;
 
  }
 .bodyBlock .right-img{
@@ -224,7 +224,7 @@ export default {
 .bodyBlock .bottomAD{
     position: absolute;
     width: 25%;
-    left: 20%;
+    left: 14%;
     top: 770px;
 
 }
