@@ -16,7 +16,10 @@
                 <img src="/static/images/detailViewHeadImg.png">
             </div>
             <div class="bodyBlock">
-                <img class="left-img" src="/static/images/poofSideBar2.png">
+
+                <img class="rightAD" src="/static/images/Scene3_RightAD.gif">
+                <img class="bottomAD" src="/static/images/Scene3_BottomAD.gif" @click="a">
+z               <img class="left-img" src="/static/images/poofSideBar2.png">
                 <img class="right-img" src="/static/images/poofSideBar2.png">
                 <div class="bodyText">
                     {{this.before_page_data.id}}
@@ -91,6 +94,9 @@ export default {
         },
         startEvent() {
             this.$router.push({ name: 'Scene4', params: {snippet: this.mix_arr} })
+        },
+        a() {
+            $(".bottomAD").css('display','none')
         }
   }
 }
@@ -196,6 +202,19 @@ export default {
     margin-bottom: 20px;
 
 }
+.bodyBlock .rightAD{
+    position:absolute;
+    width: 25%;
+    right: 0%;
+}
+.bodyBlock .bottomAD{
+    position: absolute;
+    width: 25%;
+    left: 17%;
+    top: 740px;
+
+}
+
 .bodyText{
     margin: 20px;
     margin-right: 40px;
