@@ -20,8 +20,8 @@
                 <TextPopup :style="{top: Math.floor(Math.random()*100)+'%', left: Math.floor(Math.random() *100) +'%'}" :text="text"></TextPopup>
             </div>
         </div>
-        <div :id="index+'img'" style="display:none" v-for="(text,index) in 10" :key="index+5000">
-            <ImagePopup :img="'/static/images/logo.png'" :style="{top: imageTop[index] + '%', left: imageLeft[index] +'%'}" style="z-index:90000"></ImagePopup>
+        <div :id="index+'img'" style="display:none" v-for="index in 32" :key="index+5000">
+            <ImagePopup :img="'/static/images/scene4/'+index+'.gif'" :style="{top: imageTop[index] + '%', left: imageLeft[index] +'%'}" style="z-index:90000"></ImagePopup>
         </div>
     </div>
 </template>
@@ -57,33 +57,33 @@ export default {
         setTimeout( () => {
             this.loopImgPopup(0)
         }, 7000);
-        setTimeout( () => {
-            this.beforeEndging = true
-        }, 20000);
-        setTimeout( () => {
-            this.beforeEndging = false
-        }, 21000);
-        setTimeout( () => {
-            this.beforeEndging = true
-        }, 21200);
-        setTimeout( () => {
-            this.beforeEndging = false
-        }, 21300);
-        setTimeout( () => {
-            this.beforeEndging = true
-        }, 21600);
-        setTimeout( () => {
-            this.beforeEndging = false
-        }, 21700);
-        setTimeout( () => {
-            this.beforeEndging = true
-        }, 21850);
-        setTimeout( () => {
-            this.startVideo = true
-        }, 21950);
-        setTimeout( () => {
-           this.$router.push({ name: 'Scene1'})
-        }, 38000);
+        // setTimeout( () => {
+        //     this.beforeEndging = true
+        // }, 20000);
+        // setTimeout( () => {
+        //     this.beforeEndging = false
+        // }, 21000);
+        // setTimeout( () => {
+        //     this.beforeEndging = true
+        // }, 21200);
+        // setTimeout( () => {
+        //     this.beforeEndging = false
+        // }, 21300);
+        // setTimeout( () => {
+        //     this.beforeEndging = true
+        // }, 21600);
+        // setTimeout( () => {
+        //     this.beforeEndging = false
+        // }, 21700);
+        // setTimeout( () => {
+        //     this.beforeEndging = true
+        // }, 21850);
+        // setTimeout( () => {
+        //     this.startVideo = true
+        // }, 21950);
+        // setTimeout( () => {
+        //    this.$router.push({ name: 'Scene1'})
+        // }, 38000);
 
     },
     methods: {
@@ -108,7 +108,7 @@ export default {
                 if ( 10> ++i ) {
                     this.loopImgPopup(i);
                 }
-            }, 1000)
+            }, 300)
         }
     }
 }
@@ -128,7 +128,7 @@ export default {
     position: fixed;
     z-index:900000;
 }
-.blink-none{   
+.blink-none{
     width: 0%;
     height: 0%;
 }
@@ -297,8 +297,6 @@ export default {
     height: 25%;
 
 }
-
-
 @keyframes move3 {
     from, to {
         transform: translate3d(0%, 0%, 0);
@@ -333,7 +331,5 @@ export default {
     90% {
         transform: translate3d(0%, 40%, 0);
     }
-
-
 }
 </style>

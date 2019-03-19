@@ -50,7 +50,7 @@ export default {
     top: 40%;
     left: 38vw;
     width: 400px;
-    height: 500px;
+    height: 400px;
     background-color: rgba(0,0,0,0.7);
     border-radius: 5px;
     overflow: auto;
@@ -70,11 +70,11 @@ export default {
     text-align: center;
     font-size: 23px;
     font-weight: 700;
-    padding-top: 5vh;
+    padding-top: 3.5vh;
 }
 .popup img {
-    max-width: 300px;
-    max-height: 500px;
+    width: 300px;
+    height: 300px;
 
 }
 .btn {
