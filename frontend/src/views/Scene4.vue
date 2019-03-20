@@ -35,8 +35,8 @@ export default {
     },
     data() {
         return {
-            imageTop: [5,50,Math.floor(Math.random()*70),3,Math.floor(Math.random()*70),20,0,60,Math.floor(Math.random()*70)],
-            imageLeft: [72,10,Math.floor(Math.random()*70),2,Math.floor(Math.random()*70),40,55,75,Math.floor(Math.random()*70)],
+            imageTop: [5,Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),50,Math.floor(Math.random()*70),3,Math.floor(Math.random()*70),20,0,60,Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),50,Math.floor(Math.random()*70),Math.floor(Math.random()*70),3,Math.floor(Math.random()*70),55,Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70)],
+            imageLeft: [72,Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),10,Math.floor(Math.random()*70),2,Math.floor(Math.random()*70),40,55,75,Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),2,Math.floor(Math.random()*70),Math.floor(Math.random()*70),73,Math.floor(Math.random()*70),60,Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70),Math.floor(Math.random()*70)],
             show: false,
             snippet: '',
             showPopup: false,
@@ -57,33 +57,33 @@ export default {
         setTimeout( () => {
             this.loopImgPopup(0)
         }, 7000);
-        // setTimeout( () => {
-        //     this.beforeEndging = true
-        // }, 20000);
-        // setTimeout( () => {
-        //     this.beforeEndging = false
-        // }, 21000);
-        // setTimeout( () => {
-        //     this.beforeEndging = true
-        // }, 21200);
-        // setTimeout( () => {
-        //     this.beforeEndging = false
-        // }, 21300);
-        // setTimeout( () => {
-        //     this.beforeEndging = true
-        // }, 21600);
-        // setTimeout( () => {
-        //     this.beforeEndging = false
-        // }, 21700);
-        // setTimeout( () => {
-        //     this.beforeEndging = true
-        // }, 21850);
-        // setTimeout( () => {
-        //     this.startVideo = true
-        // }, 21950);
-        // setTimeout( () => {
-        //    this.$router.push({ name: 'Scene1'})
-        // }, 38000);
+        setTimeout( () => {
+            this.beforeEndging = true
+        }, 17000);
+        setTimeout( () => {
+            this.beforeEndging = false
+        }, 18000);
+        setTimeout( () => {
+            this.beforeEndging = true
+        }, 18200);
+        setTimeout( () => {
+            this.beforeEndging = false
+        }, 18300);
+        setTimeout( () => {
+            this.beforeEndging = true
+        }, 18600);
+        setTimeout( () => {
+            this.beforeEndging = false
+        }, 18700);
+        setTimeout( () => {
+            this.beforeEndging = true
+        }, 18850);
+        setTimeout( () => {
+            this.startVideo = true
+        }, 18950);
+        setTimeout( () => {
+           this.$router.push({ name: 'Scene1'})
+        }, 35000);
 
     },
     methods: {
@@ -105,7 +105,7 @@ export default {
         loopImgPopup(i) {
             setTimeout(()=> {
                 $('#'+i+'img').css("display","initial")
-                if ( 10> ++i ) {
+                if ( 32> ++i ) {
                     this.loopImgPopup(i);
                 }
             }, 300)
