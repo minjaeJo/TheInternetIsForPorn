@@ -3,7 +3,7 @@
         <div :class="[beforeEndging ? 'blink' : 'blink-none']">
         </div>
         <video v-if="startVideo" autoplay muted playsinline class="video">
-            <source src='/static/images/EndingVideo.mp4' type='video/mp4' />
+            <source src='/static/images/Videoeo.mp4' type='video/mp4' />
         </video>
         <div class="frame" v-for="i in 9" :key="i">
             <div :class="'move'+i">
@@ -83,7 +83,7 @@ export default {
         }, 18950);
         setTimeout( () => {
            this.$router.push({ name: 'Scene1'})
-        }, 35000);
+        }, 38000);
 
     },
     methods: {
