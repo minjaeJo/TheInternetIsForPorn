@@ -53,7 +53,8 @@ export default {
             status: false,
             query_img: '',
             visible: false,
-            snippet_arr: []
+            snippet_arr: [],
+            nextPage : false
         }
     },
     created() {
@@ -83,12 +84,19 @@ export default {
         setTimeout( () => {
             this.visible = true
         }, 3000);
+        setTimeout( () => {
+            if (!nextPage){
+                this.$router.push({ name: 'Scene1'})
+            }
+        }, 40000);
     },
     methods: {
         searchData() {
+            this.nextPage = true
             this.$router.push({ name: 'Scene2', params: {query: this.search_value} })
             location.reload()
             this.status = false
+
         },
         sendDataForNextPage(data) {
             this.$modal.show('loading-Popup')
@@ -99,7 +107,7 @@ export default {
         onClick(event) {
             console.log(event)
             console.log('event')
-        }
+        },
     }
 }
 </script>

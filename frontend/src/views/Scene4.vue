@@ -42,8 +42,7 @@ export default {
             showPopup: false,
             popup: '',
             beforeEndging: false,
-            startVideo: false
-
+            startVideo: false,
         }
     },
     mounted() {
@@ -82,8 +81,11 @@ export default {
             this.startVideo = true
         }, 18950);
         setTimeout( () => {
-           this.$router.push({ name: 'Scene1'})
+            if ( nextScene == false ) {
+                this.$router.push({ name: 'Scene1'})
+            }
         }, 38000);
+        
 
     },
     methods: {

@@ -55,7 +55,8 @@ export default {
         mix_text: '',
         yes_or_no: false,
         EndPopup: false,
-        mix_arr: []
+        mix_arr: [],
+        nextPage : false
     }
   },
   mounted() {
@@ -90,12 +91,19 @@ export default {
             this.EndPopup = false
             this.nextScene();
         }, 18800);
+        setTimeout( () => {
+            if (!nextPage){
+                this.$router.push({ name: 'Scene1'})
+            }
+        }, 55000);
+        
   },
   methods: {
         nextScene() {
             this.yes_or_no = !this.yes_or_no
         },
         startEvent() {
+            this.nextPage = true
             this.$router.push({ name: 'Scene4', params: {snippet: this.mix_arr} })
         },
         a() {
