@@ -6,7 +6,11 @@
 
 <script>
 export default {
-    name: 'App'
+    name: 'App',
+    mounted() {
+        localStorage.setItem('queryIndex',0);
+
+    }
 }
 </script>
 <style>

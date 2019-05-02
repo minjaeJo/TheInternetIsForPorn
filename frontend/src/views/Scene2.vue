@@ -47,19 +47,20 @@ export default {
     data() {
         return {
             ishover : false,
-            search_api: 'https://www.googleapis.com/customsearch/v1?key=AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0&cx=001296915440147254658:cns5tpebhyi&q=',
+            search_api: '',
             search_result: [],
             search_value: '',
             status: false,
             query_img: '',
-            visible: false,
+            visible: true,
             snippet_arr: [],
-            nextPage : false
+            nextPage : false,
         }
     },
     created() {
+        this.search_api = this.$route.params.key
         if(this.$route.params.query) {
-            this.$http.get(this.search_api + this.$route.params.query).then((response)=>{
+            this.$http.get(this.$route.params.key + this.$route.params.query).then((response)=>{
                 this.search_result = response.data.items
                 this.search_value = this.$route.params.query
                 this.status = true
@@ -82,13 +83,10 @@ export default {
     },
     mounted() {
         setTimeout( () => {
-            this.visible = true
-        }, 3000);
-        setTimeout( () => {
-            if (!nextPage){
+            if (!this.nextPage){
                 this.$router.push({ name: 'Scene1'})
             }
-        }, 40000);
+        }, 35000);
     },
     methods: {
         searchData() {
@@ -100,6 +98,7 @@ export default {
         },
         sendDataForNextPage(data) {
             this.$modal.show('loading-Popup')
+            this.nextPage = true
             setTimeout( () => {
                 this.$router.push({ name: 'Scene3', params: { id : data.title, img: this.query_img, snippet : this.snippet_arr}})
             }, 5000);

@@ -15,13 +15,25 @@ export default {
     data() {
         return {
             search_value: '',
+            nowQueryIndex : 0,
+            queryArray : ['AIzaSyD_xLY5v3TRk2w5Wqnpd6Xi2ZebUKgnUnA','AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0','AIzaSyCFlCJPDYa38ZJXkA_gJtcDhgdXixbbOUA','AIzaSyD_xLY5v3TRk2w5Wqnpd6Xi2ZebUKgnUnA'],
+            nowQuery: '',
+            search_api : ''
         }
     },
     methods: {
         searchData() {
-            this.$router.push({ name: 'Scene2', params: {query: this.search_value} })
+            this.search_api = 'https://www.googleapis.com/customsearch/v1?key=' + this.nowQuery +'&cx=001296915440147254658:cns5tpebhyi&q='
+            this.$router.push({ name: 'Scene2', params: {query: this.search_value, key : this.search_api} })
+            localStorage.setItem('queryIndex',this.nowQueryIndex+1)
             this.search_value = ''
         }
+    },
+    mounted(){
+        this.nowQueryIndex = localStorage.getItem('queryIndex')
+        this.nowQueryIndex = this.nowQueryIndex % 4
+        this.nowQuery = this.queryArray[this.nowQueryIndex]
+    
     }
 }
 </script>

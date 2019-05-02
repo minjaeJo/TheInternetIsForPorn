@@ -56,7 +56,7 @@ export default {
         yes_or_no: false,
         EndPopup: false,
         mix_arr: [],
-        nextPage : false
+        nextPage3 : false
     }
   },
   mounted() {
@@ -67,35 +67,35 @@ export default {
         })
         setTimeout( () => {
             this.$modal.show('first-Popup')
-        }, 6000);
+        }, 3000);
         setTimeout( () => {
             this.$modal.show('second-Popup')
-        }, 8000);
+        }, 5000);
         setTimeout( () => {
             this.$modal.show('third-Popup')
-        }, 10000);
+        }, 7000);
         setTimeout( () => {
             this.$modal.show('firth-Popup')
-        }, 11500);
+        }, 8500);
         setTimeout( () => {
             this.$modal.show('fifth-Popup')
-        }, 13000);
+        }, 10000);
         setTimeout( () => {
             this.shake =true
-        }, 13800);
+        }, 10800);
         setTimeout( () => {
             this.shake =false
             this.EndPopup = true
-        }, 16800);
+        }, 13800);
         setTimeout( () => {
             this.EndPopup = false
             this.nextScene();
-        }, 18800);
+        }, 15800);
         setTimeout( () => {
-            if (!nextPage){
+            if (!this.nextPage3){
                 this.$router.push({ name: 'Scene1'})
             }
-        }, 55000);
+        }, 45000);
         
   },
   methods: {
@@ -103,7 +103,7 @@ export default {
             this.yes_or_no = !this.yes_or_no
         },
         startEvent() {
-            this.nextPage = true
+            this.nextPage3 = true
             this.$router.push({ name: 'Scene4', params: {snippet: this.mix_arr} })
         },
         a() {

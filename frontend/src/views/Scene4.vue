@@ -81,9 +81,7 @@ export default {
             this.startVideo = true
         }, 18950);
         setTimeout( () => {
-            if ( nextScene == false ) {
-                this.$router.push({ name: 'Scene1'})
-            }
+            this.$router.push({ name: 'Scene1'})
         }, 38000);
         
 
