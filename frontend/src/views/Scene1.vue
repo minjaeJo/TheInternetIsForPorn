@@ -25,6 +25,8 @@ export default {
         searchData() {
             this.search_api = 'https://www.googleapis.com/customsearch/v1?key=' + this.nowQuery +'&cx=001296915440147254658:cns5tpebhyi&q='
             this.$router.push({ name: 'Scene2', params: {query: this.search_value, key : this.search_api} })
+            localStorage.setItem('search_value',this.search_value)
+            localStorage.setItem('search_api',this.search_api)
             localStorage.setItem('queryIndex',this.nowQueryIndex+1)
             this.search_value = ''
         }

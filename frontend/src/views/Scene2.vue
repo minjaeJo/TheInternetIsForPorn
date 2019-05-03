@@ -58,11 +58,12 @@ export default {
         }
     },
     created() {
-        this.search_api = this.$route.params.key
-        if(this.$route.params.query) {
-            this.$http.get(this.$route.params.key + this.$route.params.query).then((response)=>{
+        // var query = 
+        this.search_api = localStorage.getItem('search_api')
+        this.search_value = localStorage.getItem('search_value')
+        if(this.search_api) {
+            this.$http.get(this.search_api+ this.search_value).then((response)=>{
                 this.search_result = response.data.items
-                this.search_value = this.$route.params.query
                 this.status = true
                 let has_img = false
                 this.search_result.forEach(element => {
@@ -91,7 +92,8 @@ export default {
     methods: {
         searchData() {
             this.nextPage = true
-            this.$router.push({ name: 'Scene2', params: {query: this.search_value, key : this.search_api} })
+            this.$router.push({ name: 'Scene2' })
+            localStorage.setItem('search_value',this.search_value)
             location.reload()
             this.status = false
 
