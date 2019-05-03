@@ -9,7 +9,6 @@ export default {
     name: 'App',
     mounted() {
         localStorage.setItem('queryIndex',0);
-
     }
 }
 </script>

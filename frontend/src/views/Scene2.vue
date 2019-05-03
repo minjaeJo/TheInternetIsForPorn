@@ -91,7 +91,7 @@ export default {
     methods: {
         searchData() {
             this.nextPage = true
-            this.$router.push({ name: 'Scene2', params: {query: this.search_value} })
+            this.$router.push({ name: 'Scene2', params: {query: this.search_value, key : this.search_api} })
             location.reload()
             this.status = false
 
