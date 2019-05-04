@@ -33,7 +33,7 @@ export default {
     },
     mounted(){
         this.nowQueryIndex = localStorage.getItem('queryIndex')
-        this.nowQueryIndex = this.nowQueryIndex % 4
+        this.nowQueryIndex = this.nowQueryIndex % 2
         this.nowQuery = this.queryArray[this.nowQueryIndex]
     
     }
