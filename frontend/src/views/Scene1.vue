@@ -16,7 +16,7 @@ export default {
         return {
             search_value: '',
             nowQueryIndex : 0,
-            queryArray : ['AIzaSyD_xLY5v3TRk2w5Wqnpd6Xi2ZebUKgnUnA','AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0','AIzaSyCFlCJPDYa38ZJXkA_gJtcDhgdXixbbOUA','AIzaSyD_xLY5v3TRk2w5Wqnpd6Xi2ZebUKgnUnA'],
+            queryArray : ['AIzaSyDBYtwLQ_gFcWRua_4AZMwVidnKynWbS-0','AIzaSyCFlCJPDYa38ZJXkA_gJtcDhgdXixbbOUA'],
             nowQuery: '',
             search_api : ''
         }
